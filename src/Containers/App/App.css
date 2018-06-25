@@ -1,0 +1,11 @@
+.halfBox{
+  width:50vw;
+  height:50vh
+}
+
+.svg1{
+  fill:lime;
+  stroke:purple;
+  stroke-width:1;
+  transition: all 1s;
+}

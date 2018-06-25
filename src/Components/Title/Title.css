@@ -1,0 +1,17 @@
+.background{
+	background-color: rgb(23, 26, 35);
+	display: flex;
+	justify-content: center;
+}
+
+.title-text{
+	font-family: 'PT Sans', sans-serif;
+	font-weight: 900;
+	font-size: 1500%;
+	color: rgb(255,255,255);
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	background-image: url('../../Assets/mountain-sunrise.jpg');
+	background-position: bottom;
+	background-size: cover;
+}
