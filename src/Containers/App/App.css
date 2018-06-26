@@ -1,11 +1,12 @@
-.halfBox{
-  width:50vw;
-  height:50vh
-}
-
-.svg1{
-  fill:lime;
-  stroke:purple;
-  stroke-width:1;
-  transition: all 1s;
+.background-top-bar{
+	background-color: rgb(23, 26, 45);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	left:0px;
+	right:0px;
+	top:0px;
+	height: 600px;
+	z-index: 10;
 }
