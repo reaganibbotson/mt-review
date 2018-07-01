@@ -8,7 +8,7 @@
 	background-image: url('../../Assets/mountain-sunrise.jpg');
 	background-position: bottom;
 	background-size: cover;
-	transition: all 1s;
+	transition: all 2s;
 }
 
 @media (max-width: 750px) {
@@ -21,4 +21,8 @@
 	.title-text{
 		font-size: 300%;
 	}
+}
+
+.title-text.on{
+	font-size: 400%
 }
