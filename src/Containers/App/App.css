@@ -23,6 +23,9 @@
 	display: inline-flex;
 }
 
-.blah{
-	padding-top: 50vh; 
+.page-padding{
+	top:0px;
+	left:0px;
+	right:0px;
+	height: 100px;
 }

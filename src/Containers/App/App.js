@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TopBar from '../TopBar/TopBar';
+import CountryCards from '../CountryCards/CountryCards';
 import './App.css';
 
 class App extends Component {
@@ -21,7 +22,8 @@ class App extends Component {
     return (
       <div className="App">
         <TopBar changeRoute={this.changeRoute} />
-        <div className='blah'>{this.state.route}</div>
+        <div className="page-padding"></div>
+        <CountryCards />
       </div>
     );
   }
