@@ -29,3 +29,14 @@
 	right:0px;
 	height: 100px;
 }
+
+@media (max-width: 700px) {
+	.background-top-bar{
+
+	}
+	.button-pos{
+		display: flex;
+		flex-direction: column;
+		top:7px;
+	}
+}

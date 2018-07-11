@@ -11,3 +11,9 @@
 	background-color: rgba(255,255,255,1);
 	cursor: pointer;
 }
+
+@media (max-width: 700px){
+	.button{
+		margin-top: 3px;
+	}
+}

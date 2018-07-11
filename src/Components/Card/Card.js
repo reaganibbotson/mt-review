@@ -4,7 +4,7 @@ import './Card.css';
 function Card(props){
 	const CountryList = props.Data.map((user)=>{
 		<div>
-			hullo
+			{user.id}
 		</div>
 	});
 

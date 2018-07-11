@@ -14,10 +14,10 @@ class CountryCards extends React.Component{
 		this.changeCountrySelection = this.changeCountrySelection.bind(this);
 	}
 
-	componentWillMount(){
+	componentDidMount(){
 		fetch('https://jsonplaceholder.typicode.com/users')
 			.then(resp=> resp.json())
-			.then((resp) => { this.setState({ data: resp })})
+			.then((data) => { this.setState({ data: data })})
 	}
 
 	changeCountrySelection(e){
