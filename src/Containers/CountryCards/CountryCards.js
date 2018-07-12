@@ -17,7 +17,11 @@ class CountryCards extends React.Component{
 	componentDidMount(){
 		fetch('https://jsonplaceholder.typicode.com/users')
 			.then(resp=> resp.json())
-			.then((data) => { this.setState({ data: data })})
+			.then((respJson) => {
+				this.setState({ data: respJson })
+				console.log(respJson)
+			}
+		);
 	}
 
 	changeCountrySelection(e){
@@ -27,7 +31,7 @@ class CountryCards extends React.Component{
 	render(){
 		return(
 			<div>
-				<Card countrySelection={this.state.countrySelection} Data={this.state.data} />
+				<Card countrySelection={this.state.countrySelection} Data={this.state.data} changeCountrySelection={this.props.changeCountrySelection} />
 			</div>
 		);
 	}

@@ -3,9 +3,9 @@ import './Title.css';
 
 function Title(props){
 	let titleStyle;
-	if(props.welcomeSlide){
+	if (props.welcomeSlide){
 		titleStyle = 'title-text'
-	}else{
+	} else {
 		titleStyle = 'title-text on'
 	};
 
