@@ -20,13 +20,6 @@ class TopBar extends React.Component{
   	}
 
 	render(){
-		let topBarStyle;
-		if(this.state.welcomeSlide){
-			topBarStyle = 'background-top-bar'
-		}else{
-			topBarStyle = 'background-top-bar on'
-		};
-
 		return(
 			<div>
 				<div className='background-top-bar on'>

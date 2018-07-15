@@ -24,6 +24,7 @@ class App extends Component {
 
   changeImageLoaded(){
     this.setState({ imageLoaded: true })
+    console.log('Image loaded');
   }
 
   render() {
@@ -31,9 +32,9 @@ class App extends Component {
       <div className="App">
         
         {!this.state.imageLoaded && 
-          <LoadingPage/>}
+          <LoadingPage imageLoaded={this.state.imageLoaded}/>}
 
-        <TopBar changeRoute={this.changeRoute} />
+        <TopBar changeRoute={this.changeRoute} changeImageLoaded={this.changeImageLoaded} />
         <CountryCards />
       </div>
     );
