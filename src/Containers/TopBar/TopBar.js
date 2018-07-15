@@ -28,12 +28,15 @@ class TopBar extends React.Component{
 		};
 
 		return(
-			<div className={topBarStyle}>
-				<div className='button-pos'>
-					<SignupButton Text="Signup" changeRoute={this.props.changeRoute} />
-					<SignupButton Text="Login" changeRoute={this.props.changeRoute} />
+			<div>
+				<div className='background-top-bar on'>
+					<div className='button-pos'>
+						<SignupButton Text="Signup" changeRoute={this.props.changeRoute} />
+						<SignupButton Text="Login" changeRoute={this.props.changeRoute} />
+					</div>
+					<Title Text="Mt. Review" welcomeSlide={this.state.welcomeSlide} />
 				</div>
-				<Title Text="Mt. Review" welcomeSlide={this.state.welcomeSlide} />
+				<div className='page-padding'></div>
 			</div>
 		);
 	}

@@ -11,7 +11,7 @@ function Title(props){
 
 	return(
 		<div className='snow-pic'>
-			<h1 className={titleStyle}>
+			<h1 className='title-text on'>
 				{props.Text}
 			</h1>
 		</div>

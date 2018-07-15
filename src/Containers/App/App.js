@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TopBar from '../TopBar/TopBar';
 import CountryCards from '../CountryCards/CountryCards';
+import LoadingPage from '../../Components/LoadingPage/LoadingPage';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +10,10 @@ class App extends Component {
 
     this.state={
       route:'Home',
+      imageLoaded: false,
     }
+
+    this.changeImageLoaded = this.changeImageLoaded.bind(this); 
   }
 
   changeRoute = (newRoute) => {
@@ -18,11 +22,18 @@ class App extends Component {
     })
   }
 
+  changeImageLoaded(){
+    this.setState({ imageLoaded: true })
+  }
+
   render() {
     return (
       <div className="App">
+        
+        {!this.state.imageLoaded && 
+          <LoadingPage/>}
+
         <TopBar changeRoute={this.changeRoute} />
-        <div className="page-padding"></div>
         <CountryCards />
       </div>
     );
