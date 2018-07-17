@@ -4,21 +4,6 @@ import SignupButton from '../../Components/SignupButton/SignupButton';
 import '../App/App.css';
 
 class TopBar extends React.Component{
-	constructor(props){
-    	super(props);
-    	this.state = {
-      		welcomeSlide: true,
-    	}
-  	}
-
-  	componentDidMount(){
-  		setTimeout(()=>{
-  			this.setState({
-  				welcomeSlide: false
-  			})
-  		}, 2000);
-  	}
-
 	render(){
 		return(
 			<div>
@@ -27,7 +12,7 @@ class TopBar extends React.Component{
 						<SignupButton Text="Signup" changeRoute={this.props.changeRoute} />
 						<SignupButton Text="Login" changeRoute={this.props.changeRoute} />
 					</div>
-					<Title Text="Mt. Review" welcomeSlide={this.state.welcomeSlide} />
+					<Title Text="Mt. Review"/>
 				</div>
 				<div className='page-padding'></div>
 			</div>

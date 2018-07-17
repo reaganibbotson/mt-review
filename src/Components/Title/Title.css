@@ -1,15 +1,8 @@
 .title-text{
 	font-family: 'PT Sans', sans-serif;
 	font-weight: 900;
-	font-size: 1500%;
+	font-size: 400%;
 	color: rgb(255,255,255);
-	-webkit-background-clip:text;
-	background-clip: text;
-	-webkit-text-fill-color:transparent;
-	text-fill-color:transparent;
-	background-image: url('../../Assets/mountain-sunrise.jpg');
-	background-position: bottom;
-	background-size: cover;
 	transition: all 2s;
 }
 
@@ -23,8 +16,4 @@
 	.title-text{
 		font-size: 300%;
 	}
-}
-
-.title-text.on{
-	font-size: 400%
 }

@@ -1,3 +1,7 @@
+.App{
+
+}
+
 .background-top-bar{
 	background-color: rgb(23, 26, 45);
 	display: flex;
@@ -39,4 +43,13 @@
 		flex-direction: column;
 		top:7px;
 	}
+}
+
+.faded{
+	opacity: 0;
+	transition: all 750ms;
+}
+
+.in {
+	opacity: 1;
 }

@@ -4,7 +4,7 @@ import './Title.css';
 function Title(props){
 	return(
 		<div className='snow-pic'>
-			<h1 className='title-text on' onLoad={props.changeImageLoaded}>
+			<h1 className='title-text'>
 				{props.Text}
 			</h1>
 		</div>

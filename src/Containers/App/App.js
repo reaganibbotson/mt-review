@@ -10,7 +10,8 @@ class App extends Component {
 
     this.state={
       route:'Home',
-      imageLoaded: false,
+      imageLoaded: true,
+      fadeIn: true,
     }
 
     this.changeImageLoaded = this.changeImageLoaded.bind(this); 
@@ -27,15 +28,29 @@ class App extends Component {
     console.log('Image loaded');
   }
 
+  componentDidMount(){
+    setTimeout(()=>{
+      this.setState({ fadeIn: !this.state.fadeIn })
+    }, 100);
+  }
+
   render() {
+    let fadeIn ='';
+    if(this.state.fadeIn){
+      fadeIn = 'faded'
+    }else{
+      fadeIn = 'faded in'
+    }
+
     return (
       <div className="App">
-        
-        {!this.state.imageLoaded && 
-          <LoadingPage imageLoaded={this.state.imageLoaded}/>}
+        <div className={fadeIn}>
+          {!this.state.imageLoaded && 
+            <LoadingPage/>}
 
-        <TopBar changeRoute={this.changeRoute} changeImageLoaded={this.changeImageLoaded} />
-        <CountryCards />
+          <TopBar changeRoute={this.changeRoute} />
+          <CountryCards />
+        </div>
       </div>
     );
   }
