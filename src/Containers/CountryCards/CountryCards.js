@@ -31,6 +31,7 @@ class CountryCards extends React.Component{
 	render(){
 		return(
 			<div className='grid'>
+				<h3>Planning a ski trip?</h3>
 				<Card countrySelection={this.state.countrySelection} Data={this.state.data} changeCountrySelection={this.props.changeCountrySelection} />
 			</div>
 		);

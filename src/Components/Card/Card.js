@@ -7,8 +7,8 @@ function Card(props){
 		count++
 		return(
 			<div className={`card card-${count}`} onClick={props.changeCountrySelection} key={i} id={i}>
-				<p>{user.id}</p>
-				<p>{user.name}</p>
+				<p className='card-title'>{user.id}</p>
+				<p className='card-content'>{user.name}</p>
 			</div>
 		);
 	});

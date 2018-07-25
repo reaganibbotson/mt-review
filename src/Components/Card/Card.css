@@ -1,5 +1,33 @@
 .card{
 	border:1px solid black;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	transition: all 300ms;
+}
+
+.card:hover{
+	transform: scale(1.02);
+}
+
+.card-title{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	background-color: rgb(23, 26, 45);
+	margin: 0px;
+	padding: 10px 0px;
+	color: white;
+	font-weight: 700;
+	font-size: 250%;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+}
+
+.card-content{
+
 }
 
 .card-1{

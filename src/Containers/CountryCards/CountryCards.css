@@ -1,4 +1,8 @@
 .grid{
 	display: grid;
 	grid-template-columns: minmax(300px, 15vw);
+	grid-gap: 10px;
+	margin-left: 5vw;
+	margin-right: 5vw;
+	margin-top: 50px;
 }
