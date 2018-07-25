@@ -22,7 +22,6 @@ class App extends Component {
     this.setState({
       route: newRoute
     })
-    //window.location = "http://localhost:3000/" + newRoute.toLowerCase();
   }
 
   changeImageLoaded(){

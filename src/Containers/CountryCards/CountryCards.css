@@ -1,16 +1,13 @@
-.grid{
-	display: grid;
-	grid-template-columns: minmax(300px, 15vw);
-	grid-gap: 10px;
-	margin-left: 5vw;
-	margin-right: 5vw;
-	margin-top: 50px;
-}
-
 .intro-text{
 	display:flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	margin-top: 65px;
+}
+
+.flex-on-em{
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
 }
