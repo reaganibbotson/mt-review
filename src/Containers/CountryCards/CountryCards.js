@@ -30,9 +30,14 @@ class CountryCards extends React.Component{
 
 	render(){
 		return(
-			<div className='grid'>
-				<h3>Planning a ski trip?</h3>
-				<Card countrySelection={this.state.countrySelection} Data={this.state.data} changeCountrySelection={this.props.changeCountrySelection} />
+			<div>
+				<div className='intro-text'>
+					<h2>Planning a ski trip?</h2>
+					<h3>Mt Review is here to help! Pick your destination below.</h3>
+				</div>
+				<div className='grid'>
+					<Card countrySelection={this.state.countrySelection} Data={this.state.data} changeCountrySelection={this.props.changeCountrySelection} />
+				</div>
 			</div>
 		);
 	}

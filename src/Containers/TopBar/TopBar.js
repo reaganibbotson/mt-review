@@ -12,7 +12,7 @@ class TopBar extends React.Component{
 						<SignupButton Text="Signup" changeRoute={this.props.changeRoute} />
 						<SignupButton Text="Login" changeRoute={this.props.changeRoute} />
 					</div>
-					<Title Text="Mt. Review"/>
+					<Title Text="Mt. Review" changeRoute={this.props.changeRoute}/>
 				</div>
 				<div className='page-padding'></div>
 			</div>

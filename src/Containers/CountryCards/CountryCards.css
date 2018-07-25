@@ -6,3 +6,11 @@
 	margin-right: 5vw;
 	margin-top: 50px;
 }
+
+.intro-text{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 65px;
+}

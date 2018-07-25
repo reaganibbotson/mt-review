@@ -1,9 +1,10 @@
 .title-text{
-	font-family: 'PT Sans', sans-serif;
-	font-weight: 900;
-	font-size: 400%;
+	font-family: 'Pacifico', cursive;
+	font-weight: 500;
+	font-size: 500%;
 	color: rgb(255,255,255);
 	transition: all 300ms;
+	cursor: pointer;
 }
 
 .title-text:hover{
