@@ -8,10 +8,7 @@ class CountryCards extends React.Component{
 
 		this.state = {
 			data: [],
-			countrySelection: '',
 		}
-
-		this.changeCountrySelection = this.changeCountrySelection.bind(this);
 	}
 
 	componentDidMount(){
@@ -24,19 +21,15 @@ class CountryCards extends React.Component{
 		);
 	}
 
-	changeCountrySelection(e){
-		this.setState({ countrySelection: e.target.id })
-	}
-
 	render(){
 		return(
 			<div>
 				<div className='intro-text'>
 					<h2>Planning a ski trip?</h2>
-					<h3>Mt Review is here to help! Pick your destination below.</h3>
+					<h3>Mt Review is here to help! Pick your destination.</h3>
 				</div>
-				<div className='flex-on-em'>
-					<Card countrySelection={this.state.countrySelection} Data={this.state.data} changeCountrySelection={this.props.changeCountrySelection} />
+				<div className='flex-on-em spacing'>
+					<Card Data={this.state.data} changeCountrySelection={this.props.changeCountrySelection} />
 				</div>
 			</div>
 		);

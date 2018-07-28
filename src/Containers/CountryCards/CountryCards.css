@@ -11,3 +11,7 @@
 	justify-content: space-around;
 	flex-wrap: wrap;
 }
+
+.spacing{
+	margin-top: 50px;
+}

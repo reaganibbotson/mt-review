@@ -16,6 +16,7 @@ class App extends Component {
     }
 
     this.changeImageLoaded = this.changeImageLoaded.bind(this); 
+    this.changeCountrySelection = this.changeCountrySelection.bind(this);
   }
 
   changeRoute = (newRoute) => {
@@ -23,6 +24,11 @@ class App extends Component {
       route: newRoute
     })
   }
+
+  changeCountrySelection(e){
+    this.setState({ countrySelection: e.target.id })
+  }
+
 
   changeImageLoaded(){
     this.setState({ imageLoaded: true })
@@ -50,8 +56,9 @@ class App extends Component {
             <LoadingPage/>}
 
           <TopBar changeRoute={this.changeRoute} />
-          <CountryCards />
+          <CountryCards changeCountrySelection={this.changeCountrySelection} />
         </div>
+        {this.state.countrySelection}
       </div>
     );
   }
