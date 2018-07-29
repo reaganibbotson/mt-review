@@ -11,14 +11,15 @@
 	transform: scale(1.02);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
 	.title-text{
-		font-size: 600%;
+		font-size: 300%;
 	}
 }
 
 @media (max-width: 515px) {
 	.title-text{
-		font-size: 300%;
+		left: 10px;
+		font-size: 250%;
 	}
 }
