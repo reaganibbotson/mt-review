@@ -8,7 +8,8 @@ function Card(props){
 		//remove the if statement when we're mapping the actual list
 		if(count<=6){
 			return(
-				<div className={`card card-${count}`} onClick={props.changeCountrySelection} key={i} id={user.name}>
+				<div className={`card card-${count}`} key={i}>
+					<div className='card-clicker' onClick={props.changeCountrySelection} id={user.name}></div>
 					<div className='card-title'>
 						<p>{user.id}</p>
 					</div>

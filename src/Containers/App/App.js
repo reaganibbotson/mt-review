@@ -58,7 +58,6 @@ class App extends Component {
           <TopBar changeRoute={this.changeRoute} />
           <CountryCards changeCountrySelection={this.changeCountrySelection} />
         </div>
-        {this.state.countrySelection}
       </div>
     );
   }
