@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //import { BrowserRouter as Router, Route} from 'react-router';
-import TopBar from '../TopBar/TopBar';
+import TopBar from '../../Components/TopBar/TopBar';
 import CountryCards from '../CountryCards/CountryCards';
 import ResortCards from '../ResortCards/ResortCards';
 import './App.css';
