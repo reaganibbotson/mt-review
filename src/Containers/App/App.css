@@ -1,5 +1,5 @@
 .App{
-
+	font-family: 'Montserrat', sans-serif;
 }
 
 .background-top-bar{
@@ -51,7 +51,7 @@
 
 .faded{
 	opacity: 0;
-	transition: all 750ms;
+	transition: all 600ms;
 }
 
 .in {

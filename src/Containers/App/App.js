@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import TopBar from '../../Components/TopBar/TopBar';
 import CountryCards from '../CountryCards/CountryCards';
 import ResortCards from '../ResortCards/ResortCards';
+import ModalWindow from '../ModalWindow/ModalWindow';
 import './App.css';
 
 class App extends Component {
@@ -59,14 +60,19 @@ class App extends Component {
       <div className="App">
         <div className={fadeIn}>
           <TopBar changeRoute={this.changeRoute} />
+          
           {this.state.countrySelection === '' ?
-            <CountryCards changeSelection={this.changeSelection} />
+            <CountryCards changeSelection={this.changeSelection} countrySelection={this.state.countrySelection} />
           :
             <ResortCards countrySelection={this.state.countrySelection} changeSelection={this.changeSelection}/>
           }
+
         </div>
-        {this.state.countrySelection}
-        {this.state.resortSelection}
+
+        {this.state.route !== 'Home' &&
+          <ModalWindow changeRoute={this.changeRoute} />
+        }
+        
       </div>
     );
   }
