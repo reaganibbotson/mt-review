@@ -1,8 +1,8 @@
 import React from 'react';
-import './CountryCards.css';
+import '../CountryCards/CountryCards.css';
 import Card from '../../Components/Card/Card';
 
-class CountryCards extends React.Component{
+class ResortCards extends React.Component{
 	constructor(props){
 		super(props);
 
@@ -25,15 +25,15 @@ class CountryCards extends React.Component{
 		return(
 			<div>
 				<div className='intro-text'>
-					<h2>Planning a ski trip?</h2>
-					<h3>Mt Review is here to help! Pick your destination.</h3>
+					<h2>{this.props.CountrySelection}</h2>
+					<h3>Click a resort to see more info!</h3>
 				</div>
 				<div className='flex-on-em spacing'>
-					<Card Data={this.state.data} changeSelection={this.props.changeSelection} countrySelction={this.props.countrySelction} />
+					<Card Data={this.state.data} changeSelection={this.props.changeSelection} countrySelection={this.props.countrySelection}/>
 				</div>
 			</div>
 		);
 	}
 }
 
-export default CountryCards;
+export default ResortCards;

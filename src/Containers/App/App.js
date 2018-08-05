@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router';
+//import { BrowserRouter as Router, Route} from 'react-router';
 import TopBar from '../TopBar/TopBar';
 import CountryCards from '../CountryCards/CountryCards';
-import LoadingPage from '../../Components/LoadingPage/LoadingPage';
+import ResortCards from '../ResortCards/ResortCards';
 import './App.css';
 
 class App extends Component {
@@ -13,26 +13,32 @@ class App extends Component {
       route:'Home',
       imageLoaded: true,
       fadeIn: true,
+      countrySelection:'',
+      resortSelection:'',
     }
 
-    this.changeImageLoaded = this.changeImageLoaded.bind(this); 
-    this.changeCountrySelection = this.changeCountrySelection.bind(this);
+    this.changeSelection = this.changeSelection.bind(this);
   }
 
   changeRoute = (newRoute) => {
-    this.setState({
-      route: newRoute
-    })
+    if(newRoute === 'Home'){
+      this.setState({
+        route: newRoute,
+        countrySelection: '',
+        resortSelection:''
+      })
+    }else{
+      this.setState({
+        route: newRoute
+      })
+    }
   }
 
-  changeCountrySelection(e){
-    this.setState({ countrySelection: e.target.id })
-  }
-
-
-  changeImageLoaded(){
-    this.setState({ imageLoaded: true })
-    console.log('Image loaded');
+  changeSelection(e){
+    this.state.countrySelection === '' ?
+      this.setState({ countrySelection: e.target.id })
+    :
+      this.setState({resortSelection: e.target.id})
   }
 
   componentDidMount(){
@@ -52,13 +58,15 @@ class App extends Component {
     return (
       <div className="App">
         <div className={fadeIn}>
-          {!this.state.imageLoaded && 
-            <LoadingPage/>}
-
           <TopBar changeRoute={this.changeRoute} />
-          <CountryCards changeCountrySelection={this.changeCountrySelection} />
+          {this.state.countrySelection === '' ?
+            <CountryCards changeSelection={this.changeSelection} />
+          :
+            <ResortCards countrySelection={this.state.countrySelection} changeSelection={this.changeSelection}/>
+          }
         </div>
         {this.state.countrySelection}
+        {this.state.resortSelection}
       </div>
     );
   }
