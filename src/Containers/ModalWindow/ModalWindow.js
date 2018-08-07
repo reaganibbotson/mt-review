@@ -29,7 +29,7 @@ class ModalWindow extends React.Component{
 			<div className={`modal-window ${fadeIn}`}>
 				<div className='close-button' onClick={()=>{this.props.changeRoute('Home')}}>X</div>
 				<div className='modal'>
-					
+					{this.props.children}
 				</div>			
 			</div>
 		);

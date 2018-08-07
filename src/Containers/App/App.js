@@ -70,7 +70,7 @@ class App extends Component {
         </div>
 
         {this.state.route !== 'Home' &&
-          <ModalWindow changeRoute={this.changeRoute} />
+          <ModalWindow changeRoute={this.changeRoute}>Hey</ModalWindow>
         }
         
       </div>
