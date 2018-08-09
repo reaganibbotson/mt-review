@@ -72,10 +72,10 @@ class App extends Component {
         </div>
 
         {this.state.route === 'Signup' &&
-          <ModalWindow changeRoute={this.changeRoute}><SignupForm></SignupForm></ModalWindow>
+          <ModalWindow changeRoute={this.changeRoute}><SignupForm changeRoute={this.changeRoute}></SignupForm></ModalWindow>
         }
         {this.state.route === 'Login' &&
-          <ModalWindow changeRoute={this.changeRoute}><LoginForm></LoginForm></ModalWindow>
+          <ModalWindow changeRoute={this.changeRoute}><LoginForm changeRoute={this.changeRoute}></LoginForm></ModalWindow>
         }
         
       </div>

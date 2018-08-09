@@ -22,7 +22,7 @@ function SignupForm(props){
 				</div>
 				<div className="flex-center buttons-container">
 					<div className='signup-button'>Signup</div>
-					<div className='signup-button cancel-button'>Cancel</div>
+					<div className='signup-button cancel-button' onClick={()=>{props.changeRoute('Home')}}>Cancel</div>
 				</div>
 
 			</div>

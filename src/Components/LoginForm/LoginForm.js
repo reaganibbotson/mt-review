@@ -18,7 +18,7 @@ function LoginForm(props){
 				</div>
 				<div className="flex-center buttons-container">
 					<div className='login-button'>Login</div>
-					<div className='login-button cancel-button'>Cancel</div>
+					<div className='login-button cancel-button' onClick={()=>{props.changeRoute('Home')}}>Cancel</div>
 				</div>
 
 			</div>
