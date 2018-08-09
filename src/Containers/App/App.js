@@ -5,6 +5,7 @@ import CountryCards from '../CountryCards/CountryCards';
 import ResortCards from '../ResortCards/ResortCards';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import SignupForm from '../../Components/SignupForm/SignupForm';
+import LoginForm from '../../Components/LoginForm/LoginForm';
 import './App.css';
 
 class App extends Component {
@@ -70,8 +71,11 @@ class App extends Component {
 
         </div>
 
-        {this.state.route !== 'Home' &&
+        {this.state.route === 'Signup' &&
           <ModalWindow changeRoute={this.changeRoute}><SignupForm></SignupForm></ModalWindow>
+        }
+        {this.state.route === 'Login' &&
+          <ModalWindow changeRoute={this.changeRoute}><LoginForm></LoginForm></ModalWindow>
         }
         
       </div>

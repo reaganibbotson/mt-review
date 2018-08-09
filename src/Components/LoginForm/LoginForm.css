@@ -1,17 +1,11 @@
-.flex-center{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.signup-form-container{
+.login-form-container{
 	height: 100%;
 	border-radius: 10px;
 	display: grid;
 	grid-template-rows: minmax(70px, 10vh) 1fr;
 }
 
-.signup-title{
+.login-title{
 	grid-row-start: 1;
 	grid-row-end: 2;
 	background-color: rgb(23, 26, 45);
@@ -22,14 +16,14 @@
 	border-top-right-radius: 10px;
 }
 
-.signup-form{
+.login-form{
 	grid-row-start: 2;
 	grid-row-end: 3;
 	flex-direction: column;
 	justify-content: space-around;
 }
 
-.signup-button{
+.login-button{
 	display: flex;
 	justify-content: center;
 	padding: 10px;
@@ -44,15 +38,11 @@
 	padding-left: 10px;
 }
 
-.signup-button:hover{
+.login-button:hover{
 	color:white;
 	background-color:rgb(23,26,45);
 }
 
 .cancel-button:hover{
 	background-color: rgb(179, 38, 38);	
-}
-
-.buttons-container{
-	flex-direction: row;
 }
