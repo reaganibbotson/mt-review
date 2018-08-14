@@ -55,7 +55,7 @@ class SignupForm extends React.Component {
 						</div>
 						<div className="flex-center buttons-container">
 							<div className='signup-button'>Signup</div>
-							<div className='signup-button cancel-button' onClick={()=>{this.props.changeRoute('Home')}}>Cancel</div>
+							<div className='signup-button cancel-button' onClick={()=>{this.props.changeModal('')}}>Cancel</div>
 						</div>
 				</div>
 			</div>

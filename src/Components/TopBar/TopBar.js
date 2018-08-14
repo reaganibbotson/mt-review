@@ -9,8 +9,8 @@ function TopBar(props){
 			<div className='background-top-bar on'>
 				<Title Text="Mt. Review" changeRoute={props.changeRoute}/>
 				<div className='button-pos'>
-					<SignupButton Text="Signup" changeRoute={props.changeRoute} />
-					<SignupButton Text="Login" changeRoute={props.changeRoute} />
+					<SignupButton Text="Signup" changeModal={props.changeModal} />
+					<SignupButton Text="Login" changeModal={props.changeModal} />
 				</div>
 			</div>
 			<div className='page-padding'></div>

@@ -3,7 +3,7 @@ import './SignupButton.css';
 
 function SignupButton(props){
 	return(
-		<div className='button' onClick={() => {props.changeRoute(props.Text)}} >
+		<div className='button' onClick={() => {props.changeModal(props.Text)}} >
 				{props.Text}
 		</div>
 	);

@@ -27,7 +27,7 @@ class ModalWindow extends React.Component{
 
 		return(
 			<div className={`modal-window ${fadeIn}`}>
-				<div className='close-button' onClick={()=>{this.props.changeRoute('Home')}}>X</div>
+				<div className='close-button' onClick={()=>{this.props.changeModal('')}}>X</div>
 				<div className='modal'>
 					{this.props.children}
 				</div>			

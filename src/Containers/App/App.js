@@ -14,6 +14,7 @@ class App extends Component {
 
     this.state={
       route:'Home',
+      modal:'',
       imageLoaded: true,
       fadeIn: true,
       countrySelection:'',
@@ -35,6 +36,12 @@ class App extends Component {
         route: newRoute
       })
     }
+  }
+
+  changeModal = (newModal) => {
+    this.setState({
+      modal: newModal
+    })
   }
 
   changeSelection(e){
@@ -61,7 +68,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className={fadeIn}>
-          <TopBar changeRoute={this.changeRoute} />
+          <TopBar changeModal={this.changeModal} changeRoute={this.changeRoute} />
           
           {
             this.state.countrySelection === '' ?
@@ -75,11 +82,11 @@ class App extends Component {
 
         </div>
 
-        {this.state.route === 'Signup' &&
-          <ModalWindow changeRoute={this.changeRoute}><SignupForm changeRoute={this.changeRoute}></SignupForm></ModalWindow>
+        {this.state.modal === 'Signup' &&
+          <ModalWindow changeModal={this.changeModal}><SignupForm changeModal={this.changeModal}></SignupForm></ModalWindow>
         }
-        {this.state.route === 'Login' &&
-          <ModalWindow changeRoute={this.changeRoute}><LoginForm changeRoute={this.changeRoute}></LoginForm></ModalWindow>
+        {this.state.modal === 'Login' &&
+          <ModalWindow changeModal={this.changeModal}><LoginForm changeModal={this.changeModal}></LoginForm></ModalWindow>
         }
         
       </div>

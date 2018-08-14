@@ -42,7 +42,7 @@ class LoginForm extends React.Component{
 					</div>
 					<div className="flex-center buttons-container">
 						<div className='login-button'>Login</div>
-						<div className='login-button cancel-button' onClick={()=>{this.props.changeRoute('Home')}}>Cancel</div>
+						<div className='login-button cancel-button' onClick={()=>{this.props.changeModal('')}}>Cancel</div>
 					</div>
 
 				</div>
