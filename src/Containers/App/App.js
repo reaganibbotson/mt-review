@@ -63,10 +63,14 @@ class App extends Component {
         <div className={fadeIn}>
           <TopBar changeRoute={this.changeRoute} />
           
-          {this.state.countrySelection === '' ?
+          {
+            this.state.countrySelection === '' ?
             <CountryCards changeSelection={this.changeSelection} countrySelection={this.state.countrySelection} />
-          :
+          : 
+            this.state.resortSelection === '' ?
             <ResortCards countrySelection={this.state.countrySelection} changeSelection={this.changeSelection}/>
+          : 
+            <div>{this.state.resortSelection}</div>
           }
 
         </div>
