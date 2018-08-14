@@ -1,3 +1,23 @@
+This project is an attempt at a basic review site, specifically for snowboarding/skiing resorts. 
+
+It's currently sans-backend so is rendered with dumby data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
