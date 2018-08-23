@@ -6,6 +6,7 @@ import ResortCards from '../ResortCards/ResortCards';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import SignupForm from '../../Components/SignupForm/SignupForm';
 import LoginForm from '../../Components/LoginForm/LoginForm';
+import ResortPage from '../ResortPage/ResortPage';
 import './App.css';
 
 class App extends Component {
@@ -77,7 +78,7 @@ class App extends Component {
             this.state.resortSelection === '' ?
             <ResortCards countrySelection={this.state.countrySelection} changeSelection={this.changeSelection}/>
           : 
-            <div>{this.state.resortSelection}</div>
+            <ResortPage resortSelection={this.state.resortSelection} />
           }
 
         </div>
