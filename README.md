@@ -1,6 +1,6 @@
 This project is an attempt at a basic review site, specifically for snowboarding/skiing resorts. 
 
-It's currently sans-backend so is rendered with dumby data.
+This is a learning exercise and is currently sans-backend so is rendered with dumby data.
 
 <br><br><br><br>
 
