@@ -6,6 +6,7 @@ class ResortPage extends React.Component{
 		super(props);
 		this.state = {
 			data:'',
+			leaveReview:false,
 		}
 	}
 
@@ -28,14 +29,18 @@ class ResortPage extends React.Component{
 					{this.state.data.name}
 				</h1>
 				<div className='grid'>
-					<div className='mountain-img full-grid-row row2'>
+					<div className='full-grid-row row2'>
 						<p>Insert image here?</p>
 					</div>
 					<div className='centred-grid-row row3'>
 						<p>Insert description/blurb here.</p>
 					</div>
 					<div className='review-system-wrapper centred-grid-row row4'>
-						<p>Insert review system component here.</p>
+						{this.state.leaveReview === false ?
+							<p>Insert current reviews component here.</p>
+						:
+							<p>Insert leave a review component here.</p>
+						}
 					</div>
 				</div>
 			</div>
