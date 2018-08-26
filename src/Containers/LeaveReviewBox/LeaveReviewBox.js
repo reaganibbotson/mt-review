@@ -1,5 +1,4 @@
 import React from 'react';
-import Rating from 'react-rating';
 import './LeaveReviewBox.css';
 
 
@@ -13,12 +12,13 @@ class LeaveReviewBox extends React.Component{
 			villageRating:0,
 			priceRating:0,
 		}
-	}
+	};
 
 	render(){
 		return(
 			<div>
-				<Rating initialRating={0}/>
+				
+				{this.state.overallRating}
 			</div>
 		);
 	}
