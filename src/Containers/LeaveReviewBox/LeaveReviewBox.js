@@ -1,5 +1,8 @@
 import React from 'react';
 import './LeaveReviewBox.css';
+import ReactStars from 'react-stars'
+
+
 
 
 class LeaveReviewBox extends React.Component{
@@ -12,13 +15,94 @@ class LeaveReviewBox extends React.Component{
 			villageRating:0,
 			priceRating:0,
 		}
+
+		this.overallRatingChanged = this.overallRatingChanged.bind(this);
+		this.powderRatingChanged = this.powderRatingChanged.bind(this);
+		this.crowdRatingChanged = this.crowdRatingChanged.bind(this);
+		this.villageRatingChanged = this.villageRatingChanged.bind(this);
+		this.priceRatingChanged = this.priceRatingChanged.bind(this);
+	
 	};
+
+
+	overallRatingChanged(newRating){
+		this.setState({overallRating:newRating})
+	}
+
+	powderRatingChanged(newRating){
+		this.setState({powderRating:newRating})
+	}
+
+	crowdRatingChanged(newRating){
+		this.setState({crowdRating:newRating})
+	}
+
+	villageRatingChanged(newRating){
+		this.setState({villageRating:newRating})
+	}
+
+	priceRatingChanged(newRating){
+		this.setState({priceRating:newRating})
+	}
 
 	render(){
 		return(
-			<div>
-				
+			<div className='leave-review-wrapper'>
+				<div>
+					<h6>Overall Rating</h6>
+					<ReactStars
+				  count={5}
+				  onChange={this.overallRatingChanged}
+				  size={50}
+				  color2={'#ffd700'}
+				  value={this.state.overallRating} />
 				{this.state.overallRating}
+				</div>
+
+				<div>
+					<h6>Powder Rating</h6>
+					<ReactStars
+				  count={5}
+				  onChange={this.powderRatingChanged}
+				  size={50}
+				  color2={'#ffd700'}
+				  value={this.state.powderRating} />
+				{this.state.powderRating}
+				</div>
+
+				<div>
+					<h6>Crowd Rating</h6>
+					<ReactStars
+				  count={5}
+				  onChange={this.crowdRatingChanged}
+				  size={50}
+				  color2={'#ffd700'}
+				  value={this.state.crowdRating} />
+				{this.state.crowdRating}
+				</div>
+
+				<div>
+					<h6>Village Rating</h6>
+					<ReactStars
+				  count={5}
+				  onChange={this.villageRatingChanged}
+				  size={50}
+				  color2={'#ffd700'}
+				  value={this.state.villageRating} />
+				{this.state.villageRating}
+				</div>
+
+				<div>
+					<h6>Price Rating</h6>
+					<ReactStars
+				  count={5}
+				  onChange={this.priceRatingChanged}
+				  size={50}
+				  color2={'#ffd700'}
+				  value={this.state.priceRating} />
+				{this.state.priceRating}
+				</div>
+				
 			</div>
 		);
 	}
