@@ -47,62 +47,36 @@ class LeaveReviewBox extends React.Component{
 
 	render(){
 		return(
-			<div className='leave-review-wrapper'>
-				<div>
-					<h6>Overall Rating</h6>
-					<ReactStars
-				  count={5}
-				  onChange={this.overallRatingChanged}
-				  size={50}
-				  color2={'#ffd700'}
-				  value={this.state.overallRating} />
-				{this.state.overallRating}
-				</div>
+			<div className='leave-component-wrapper'>
+				<div className='leave-reviews-wrapper'>
+					<div className='review-stars'>
+						<label>Overall Rating</label>
+						<ReactStars count={5} onChange={this.overallRatingChanged} size={50} color2={'#ffd700'} value={this.state.overallRating} />
+					</div>
 
-				<div>
-					<h6>Powder Rating</h6>
-					<ReactStars
-				  count={5}
-				  onChange={this.powderRatingChanged}
-				  size={50}
-				  color2={'#ffd700'}
-				  value={this.state.powderRating} />
-				{this.state.powderRating}
-				</div>
+					<div className='review-stars'>
+						<label>Powder Rating</label>
+						<ReactStars count={5} onChange={this.powderRatingChanged} size={50} color2={'#ffd700'} value={this.state.powderRating} />
+					</div>
 
-				<div>
-					<h6>Crowd Rating</h6>
-					<ReactStars
-				  count={5}
-				  onChange={this.crowdRatingChanged}
-				  size={50}
-				  color2={'#ffd700'}
-				  value={this.state.crowdRating} />
-				{this.state.crowdRating}
-				</div>
+					<div className='review-stars'>
+						<label>Crowd Rating</label>
+						<ReactStars count={5} onChange={this.crowdRatingChanged} size={50} color2={'#ffd700'} value={this.state.crowdRating} />
+					</div>
 
-				<div>
-					<h6>Village Rating</h6>
-					<ReactStars
-				  count={5}
-				  onChange={this.villageRatingChanged}
-				  size={50}
-				  color2={'#ffd700'}
-				  value={this.state.villageRating} />
-				{this.state.villageRating}
-				</div>
+					<div className='review-stars'>
+						<label>Village Rating</label>
+						<ReactStars count={5} onChange={this.villageRatingChanged} size={50} color2={'#ffd700'} value={this.state.villageRating} />
+					</div>
 
-				<div>
-					<h6>Price Rating</h6>
-					<ReactStars
-				  count={5}
-				  onChange={this.priceRatingChanged}
-				  size={50}
-				  color2={'#ffd700'}
-				  value={this.state.priceRating} />
-				{this.state.priceRating}
+					<div className='review-stars'>
+						<label>Price Rating</label>
+						<ReactStars count={5} onChange={this.priceRatingChanged} size={50} color2={'#ffd700'} value={this.state.priceRating} />
+					</div>				
 				</div>
-				
+				<div className='submit-review-btn'>
+					Submit Review
+				</div>			
 			</div>
 		);
 	}

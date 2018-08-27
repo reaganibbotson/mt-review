@@ -1,3 +1,35 @@
-.leave-review-wrapper{
-	height: 100%;
+.leave-component-wrapper{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.leave-reviews-wrapper{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+	justify-content: space-between;
+	margin: 20px;
+}
+
+.review-stars{
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.submit-review-btn{
+	border: 1px solid black;
+	padding:5px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+.submit-review-btn:hover{
+	background-color: white;
+	cursor: pointer;
 }
