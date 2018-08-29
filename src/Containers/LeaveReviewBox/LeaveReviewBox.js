@@ -51,27 +51,27 @@ class LeaveReviewBox extends React.Component{
 				<div className='leave-reviews-wrapper'>
 					<div className='review-stars'>
 						<label>Overall Rating</label>
-						<ReactStars count={5} onChange={this.overallRatingChanged} size={50} color2={'#ffd700'} value={this.state.overallRating} />
+						<ReactStars count={5} onChange={this.overallRatingChanged} size={40} color2={'#ffd700'} value={this.state.overallRating} />
 					</div>
 
 					<div className='review-stars'>
 						<label>Powder Rating</label>
-						<ReactStars count={5} onChange={this.powderRatingChanged} size={50} color2={'#ffd700'} value={this.state.powderRating} />
+						<ReactStars count={5} onChange={this.powderRatingChanged} size={40} color2={'#ffd700'} value={this.state.powderRating} />
 					</div>
 
 					<div className='review-stars'>
 						<label>Crowd Rating</label>
-						<ReactStars count={5} onChange={this.crowdRatingChanged} size={50} color2={'#ffd700'} value={this.state.crowdRating} />
+						<ReactStars count={5} onChange={this.crowdRatingChanged} size={40} color2={'#ffd700'} value={this.state.crowdRating} />
 					</div>
 
 					<div className='review-stars'>
 						<label>Village Rating</label>
-						<ReactStars count={5} onChange={this.villageRatingChanged} size={50} color2={'#ffd700'} value={this.state.villageRating} />
+						<ReactStars count={5} onChange={this.villageRatingChanged} size={40} color2={'#ffd700'} value={this.state.villageRating} />
 					</div>
 
 					<div className='review-stars'>
 						<label>Price Rating</label>
-						<ReactStars count={5} onChange={this.priceRatingChanged} size={50} color2={'#ffd700'} value={this.state.priceRating} />
+						<ReactStars count={5} onChange={this.priceRatingChanged} size={40} color2={'#ffd700'} value={this.state.priceRating} />
 					</div>				
 				</div>
 				<div className='submit-review-btn'>

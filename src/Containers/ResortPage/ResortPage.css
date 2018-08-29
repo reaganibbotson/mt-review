@@ -51,6 +51,7 @@
 
 .review-btns{
 	display: flex;
+	color: black;
 	width: 49.5%;
 	align-self: center;
 	justify-content: center;
@@ -61,12 +62,14 @@
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
 	background-color: rgba(200,200,200,0.3);
+	transition: all 300ms;
 }
 
-.leave-review-btn{
-	
+.active-review-btn{
+	color: white;
+	background-color: rgb(23, 26, 45);
 }
 
-.see-review-btn{
-
+.review-system-wrapper{
+	background-color: rgb(23, 26, 45);
 }

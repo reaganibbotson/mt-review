@@ -1,5 +1,6 @@
 import React from 'react';
 import LeaveReviewBox from '../LeaveReviewBox/LeaveReviewBox';
+import SeeReviewBox from '../SeeReviewBox/SeeReviewBox';
 import './ResortPage.css';
 
 class ResortPage extends React.Component{
@@ -30,13 +31,13 @@ class ResortPage extends React.Component{
 
 	render(){
 		
-		let leaveReviewTabStyle = ''
-		let seeReviewTabStyle = ''
+		let leaveReviewTabStyle = 'review-btns'
+		let seeReviewTabStyle = 'review-btns'
 
-		if(!this.state.leaveReview){
-
+		if(this.state.leaveReview){
+			leaveReviewTabStyle = 'review-btns active-review-btn'
 		}else{
-
+			seeReviewTabStyle = 'review-btns active-review-btn'
 		};
 
 		return(
@@ -53,11 +54,11 @@ class ResortPage extends React.Component{
 					</div>
 					<div className='review-system-wrapper centred-grid-row row4'>
 						<div className='review-btn-wrapper'>
-							<div className='review-btns see-review-btn' onClick={()=>this.changeReviewBox(false)}>Reviews</div>
-							<div className='review-btns leave-review-btn' onClick={()=>this.changeReviewBox(true)}>Leave a Review</div>
+							<div className={seeReviewTabStyle} onClick={()=>this.changeReviewBox(false)}>Reviews</div>
+							<div className={leaveReviewTabStyle} onClick={()=>this.changeReviewBox(true)}>Leave a Review</div>
 						</div>
 						{this.state.leaveReview === false ?
-							<p>Insert current reviews component here.</p>
+							<SeeReviewBox/>
 						:
 							<LeaveReviewBox/>
 						}

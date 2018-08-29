@@ -1,11 +1,11 @@
-.leave-component-wrapper{
+.see-component-wrapper{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
 
-.leave-reviews-wrapper{
+.see-reviews-wrapper{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
