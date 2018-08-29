@@ -10,6 +10,7 @@ class LoginForm extends React.Component{
 		}
 		this.updateEmail = this.updateEmail.bind(this);
 		this.updatePassword = this.updatePassword.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 	}
 
 	updateEmail(e){
@@ -21,6 +22,22 @@ class LoginForm extends React.Component{
 	updatePassword(e){
 		this.setState({
 			password: e.target.value
+		})
+	}
+
+	onSubmit(){
+		fetch('http://localhost:3000/login', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				email: this.state.email,
+				password: this.state.password
+			})
+		})
+		.then(response=>response.json())
+		.then(user => {
+			console.log
+			this.props.changeModal('')
 		})
 	}
 
@@ -41,7 +58,7 @@ class LoginForm extends React.Component{
 						<input type="password" placeholder='Enter your password here' onChange={this.updatePassword}/>
 					</div>
 					<div className="flex-center buttons-container">
-						<div className='login-button'>Login</div>
+						<div className='login-button' onClick={this.onSubmit}>Login</div>
 						<div className='login-button cancel-button' onClick={()=>{this.props.changeModal('')}}>Cancel</div>
 					</div>
 

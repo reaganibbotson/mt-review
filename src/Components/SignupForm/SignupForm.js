@@ -14,6 +14,7 @@ class SignupForm extends React.Component {
 		this.updateEmail = this.updateEmail.bind(this);
 		this.updateFullName = this.updateFullName.bind(this);
 		this.updatePassword = this.updatePassword.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 	}
 
 	updateEmail(e){
@@ -33,6 +34,24 @@ class SignupForm extends React.Component {
 			password: e.target.value
 		})
 	}
+
+	onSubmit(){
+		fetch('http://localhost:3000/signup', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify({
+				email: this.state.email,
+				fullName: this.state.fullName,
+				password: this.state.password
+			})
+		})
+		.then(response=>response.json())
+		.then(user => {
+			console.log
+			this.props.changeModal('')
+		})
+	}
+
 
 	render(){
 		return(
@@ -54,7 +73,7 @@ class SignupForm extends React.Component {
 							<input type="password" placeholder='Enter your password here' onChange={this.updatePassword}/>
 						</div>
 						<div className="flex-center buttons-container">
-							<div className='signup-button'>Signup</div>
+							<div className='signup-button' onClick={this.onSubmit}>Signup</div>
 							<div className='signup-button cancel-button' onClick={()=>{this.props.changeModal('')}}>Cancel</div>
 						</div>
 				</div>
