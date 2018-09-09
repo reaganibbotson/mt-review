@@ -7,6 +7,7 @@ import ModalWindow from '../ModalWindow/ModalWindow';
 import SignupForm from '../../Components/SignupForm/SignupForm';
 import LoginForm from '../../Components/LoginForm/LoginForm';
 import ResortPage from '../ResortPage/ResortPage';
+import SignOutForm from '../../Components/SignOutForm/SignOutForm';
 import './App.css';
 
 class App extends Component {
@@ -16,13 +17,15 @@ class App extends Component {
     this.state={
       route:'Home',
       modal:'',
-      imageLoaded: true,
       fadeIn: true,
       countrySelection:'',
       resortSelection:'',
+      loggedIn:false
     }
 
     this.changeSelection = this.changeSelection.bind(this);
+    this.logInUser = this.logInUser.bind(this);
+    this.signOutUser = this.signOutUser.bind(this);
   }
 
   changeRoute = (newRoute) => {
@@ -37,6 +40,15 @@ class App extends Component {
         route: newRoute
       })
     }
+  }
+
+  logInUser(){
+    this.setState({loggedIn: true})
+  }
+
+  signOutUser(){
+    this.setState({loggedIn: false})
+    this.setState({modal:''})
   }
 
   changeModal = (newModal) => {
@@ -69,7 +81,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className={fadeIn}>
-          <TopBar changeModal={this.changeModal} changeRoute={this.changeRoute} />
+          <TopBar changeModal={this.changeModal} changeRoute={this.changeRoute} loggedIn={this.state.loggedIn} logOutUser={this.logInUser}/>
           
           {
             this.state.countrySelection === '' ?
@@ -84,12 +96,14 @@ class App extends Component {
         </div>
 
         {this.state.modal === 'Signup' &&
-          <ModalWindow changeModal={this.changeModal}><SignupForm changeModal={this.changeModal}></SignupForm></ModalWindow>
+          <ModalWindow changeModal={this.changeModal}><SignupForm changeModal={this.changeModal} logInUser={this.logInUser}></SignupForm></ModalWindow>
         }
         {this.state.modal === 'Login' &&
-          <ModalWindow changeModal={this.changeModal}><LoginForm changeModal={this.changeModal}></LoginForm></ModalWindow>
+          <ModalWindow changeModal={this.changeModal}><LoginForm changeModal={this.changeModal} logInUser={this.logInUser}></LoginForm></ModalWindow>
         }
-        
+        {this.state.modal === 'Sign Out' &&
+          <ModalWindow changeModal={this.changeModal}><SignOutForm changeModal={this.changeModal} signOutUser={this.signOutUser}></SignOutForm></ModalWindow>
+        }
       </div>
     );
   }
