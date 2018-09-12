@@ -20,7 +20,12 @@ class App extends Component {
       fadeIn: true,
       countrySelection:'',
       resortSelection:'',
-      loggedIn:false
+      loggedIn:false,
+      user:{
+        email:'',
+        fullName:'',
+        userID:''
+      }
     }
 
     this.changeSelection = this.changeSelection.bind(this);
@@ -42,13 +47,23 @@ class App extends Component {
     }
   }
 
-  logInUser(){
+  logInUser=(data)=>{
     this.setState({loggedIn: true})
+    this.setState({user:{
+      email: data.email,
+      fullName: data.full_name,
+      userID: data.user_id
+    }})
   }
 
   signOutUser(){
     this.setState({loggedIn: false})
     this.setState({modal:''})
+    this.setState({user:{
+      email:'',
+      fullName:'',
+      userID:''
+    }})
   }
 
   changeModal = (newModal) => {

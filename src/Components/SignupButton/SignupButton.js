@@ -3,7 +3,7 @@ import './SignupButton.css';
 
 function SignupButton(props){
 	return(
-		<div className='button' onClick={() => {props.changeModal(props.Text)}} >
+		<div className='signout-button' onClick={() => {props.changeModal(props.Text)}} >
 				{props.Text}
 		</div>
 	);

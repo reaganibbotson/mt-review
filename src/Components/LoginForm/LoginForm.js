@@ -36,9 +36,11 @@ class LoginForm extends React.Component{
 		})
 		.then(response=>response.json())
 		.then(user => {
-			console.log
-			this.props.changeModal('');
-			this.props.logInUser();
+			if(user.id){
+				console.log
+				this.props.changeModal('');
+				this.props.logInUser(user);			
+			}
 		})
 	}
 

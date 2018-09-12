@@ -11,7 +11,7 @@ function Card(props){
 		//remove the if statement when we're mapping the actual list
 		//if(count<=limit){
 			return(
-				<div className={`card card-${count}`} onClick={props.changeSelection} key={i} id={user.name}>
+				<div className={`card`} onClick={props.changeSelection} key={i} id={user.name}>
 					<div className='card-title'>
 						<p>{user.id}</p>
 					</div>
