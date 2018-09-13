@@ -12,7 +12,7 @@ class CountryCards extends React.Component{
 	}
 
 	componentDidMount(){
-		fetch('https://mt-review-node.herokuapp.com/regions')
+		fetch('https://localhost:3000/regions')
 			.then(resp=> resp.json())
 			.then((respJson) => {
 				this.setState({ data: respJson })
