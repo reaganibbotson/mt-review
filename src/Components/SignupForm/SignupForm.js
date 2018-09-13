@@ -7,12 +7,12 @@ class SignupForm extends React.Component {
 
 		this.state = {
 			email:'',
-			fullName:'',
+			username:'',
 			password:''
 		}
 
 		this.updateEmail = this.updateEmail.bind(this);
-		this.updateFullName = this.updateFullName.bind(this);
+		this.updateUsername = this.updateUsername.bind(this);
 		this.updatePassword = this.updatePassword.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 	}
@@ -23,9 +23,9 @@ class SignupForm extends React.Component {
 		})
 	}
 
-	updateFullName(e){
+	updateUsername(e){
 		this.setState({
-			fullName: e.target.value
+			username: e.target.value
 		})
 	}
 
@@ -36,12 +36,12 @@ class SignupForm extends React.Component {
 	}
 
 	onSubmit(){
-		fetch('https://mt-review-node.herokuapp.com/signup', {
+		fetch('https://localhost:3000/signup', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
 				email: this.state.email,
-				fullName: this.state.fullName,
+				username: this.state.username,
 				password: this.state.password
 			})
 		})
@@ -66,8 +66,8 @@ class SignupForm extends React.Component {
 							<input autoFocus type='email' placeholder='Enter your email here' onChange={this.updateEmail}/>	
 						</div>
 						<div>
-							<div>Full Name</div>
-							<input type="text" placeholder='Enter your name here' onChange={this.updateFullName}/>
+							<div>Userame</div>
+							<input type="text" placeholder='Enter your username here' onChange={this.updateUsername}/>
 						</div>
 						<div>
 							<div>Password</div>

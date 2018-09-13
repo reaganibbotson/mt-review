@@ -26,7 +26,7 @@ class LoginForm extends React.Component{
 	}
 
 	onSubmit(){
-		fetch('https://mt-review-node.herokuapp.com/login', {
+		fetch('https://localhost:3000/login', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
 			body: JSON.stringify({
