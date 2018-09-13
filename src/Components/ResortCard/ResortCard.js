@@ -20,4 +20,4 @@ function ResortCard(props){
 	return ResortList
 }
 
-export default Card;
+export default ResortCard;
