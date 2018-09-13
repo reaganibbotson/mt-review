@@ -4,19 +4,19 @@ import './Card.css';
 function Card(props){
 	let count = 0;
 
-	const CountryList = props.Data.map((user, i)=>{
+	const CountryList = props.Data.map((card, i)=>{
 		//tick count
 		count++
 
 		//remove the if statement when we're mapping the actual list
 		//if(count<=limit){
 			return(
-				<div className={`card`} onClick={props.changeSelection} key={i} id={user.name}>
+				<div className={`card`} onClick={props.changeSelection} key={i} id={card.region}>
 					<div className='card-title'>
-						<p>{user.id}</p>
+						<p>{card.region}</p>
 					</div>
 					<div className='card-content'>
-						<p>{user.name}</p>
+						<p>{card.region}</p>
 					</div>
 				</div>
 			);
