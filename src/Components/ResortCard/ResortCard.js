@@ -8,10 +8,10 @@ function ResortCard(props){
 		return(
 			<div className={`card`} onClick={props.changeSelection} key={i} id={card.resort_id}>
 				<div className='card-title'>
-					<p>{card.resort}</p>
+					<p>{card.resort_name}</p>
 				</div>
 				<div className='card-content'>
-					<p>{card.resort}</p>
+					<p>{card.resort_name}</p>
 				</div>
 			</div>
 		);
