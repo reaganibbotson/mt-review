@@ -12,7 +12,7 @@ class ResortCards extends React.Component{
 	}
 
 	componentDidMount(){
-		fetch(`https://localhost:3000/resorts:${this.props.countrySelection}`)
+		fetch(`https://mt-review-node.herokuapp.com/resorts:${this.props.countrySelection}`)
 			.then(resp=> resp.json())
 			.then((respJson) => {
 				this.setState({ data: respJson })

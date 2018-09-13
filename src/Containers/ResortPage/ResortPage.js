@@ -18,7 +18,7 @@ class ResortPage extends React.Component{
 	}
 
 	componentDidMount(){
-		fetch(`https://localhost:3000/resort:${this.props.resortID}`)
+		fetch(`https://mt-review-node.herokuapp.com/resort:${this.props.resortID}`)
 		.then(resp => resp.json())
 		.then(respJson =>{
 			const displayResort = respJson.filter((resort)=>{
