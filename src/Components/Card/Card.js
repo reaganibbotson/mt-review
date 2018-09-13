@@ -11,12 +11,12 @@ function Card(props){
 		//remove the if statement when we're mapping the actual list
 		//if(count<=limit){
 			return(
-				<div className={`card`} onClick={props.changeSelection} key={i} id={card.resort_name}>
+				<div className={`card`} onClick={props.changeSelection} key={i} id={card.region}>
 					<div className='card-title'>
-						<p>{card.resort_id}</p>
+						<p>{card.region}</p>
 					</div>
 					<div className='card-content'>
-						<p>{card.resort_name}</p>
+						<p>{card.region}</p>
 					</div>
 				</div>
 			);
