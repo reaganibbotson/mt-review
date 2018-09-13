@@ -1,9 +1,9 @@
 import React from 'react';
-import './Card.css';
+import '../Card/Card.css';
 
-function Card(props){
+function ResortCard(props){
 
-	const CountryList = props.Data.map((card, i)=>{
+	const ResortList = props.Data.map((card, i)=>{
 
 		return(
 			<div className={`card`} onClick={props.changeSelection} key={i} id={card.resort_id}>
@@ -17,7 +17,7 @@ function Card(props){
 		);
 	});
 	
-	return CountryList
+	return ResortList
 }
 
 export default Card;
