@@ -18,20 +18,14 @@ class ResortPage extends React.Component{
 	}
 
 	componentDidMount(){
-		fetch(`https://mt-review-node.herokuapp.com/resort/${this.props.resortSelection}`,{
-			method:'post',
-			headers:{'Content Type': 'application/json'},
-			body:JSON.stringify({
-				resort_name: this.props.resortSelection
-			})
-		})
+		fetch(`https://mt-review-node.herokuapp.com/resort/${this.props.resortSelection}`)
 		.then(resp=>resp.json())
 		.then(data=>{
 			this.setState({
 				data: data
 			})
 		})
-		.catch(err=>console.log)
+		.catch(err=>console.log);
 	}
 
 	render(){
