@@ -23,7 +23,7 @@ class App extends Component {
       loggedIn:false,
       user:{
         email:'',
-        fullName:'',
+        username:'',
         userID:''
       }
     }
@@ -51,7 +51,7 @@ class App extends Component {
     this.setState({loggedIn: true})
     this.setState({user:{
       email: data.email,
-      fullName: data.full_name,
+      username: data.username,
       userID: data.user_id
     }})
   }
