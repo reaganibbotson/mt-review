@@ -15,6 +15,29 @@ class SeeReviewBox extends React.Component{
 		}	
 	};
 
+	componentDidMount(){
+		fetch('https://mt-review-node.herokuapp.com/see-review',{
+			method:'post',
+			headers:{
+				'Content Type':'application/json'
+			},
+			body: JSON.stringify({
+				resortID: this.props.resortID
+			})
+		})
+		.then(response => response.json())
+		.then(data=>{
+			this.setState({
+				overallRating: data.total_score,
+				powderRating: data.powder_score,
+				crowdRating: data.crowd_score,
+				villageRating: data.village_score,
+				priceRating: data.price_score
+			})
+		})
+		.catch(err=> alert(`Couldn't retrieve reviews: ${err}`))
+	}
+
 	render(){
 		return(
 			<div className='see-component-wrapper'>

@@ -18,15 +18,20 @@ class ResortPage extends React.Component{
 	}
 
 	componentDidMount(){
-		fetch(`https://mt-review-node.herokuapp.com/resort:${this.props.resortID}`)
-		.then(resp => resp.json())
-		.then(respJson =>{
-			const displayResort = respJson.filter((resort)=>{
-				return resort.name === this.props.resortSelection
+		fetch(`https://mt-review-node.herokuapp.com/resort:${this.props.data.resort_id}`,{
+			method:'post',
+			headers:{'Content Type': 'application/json'},
+			body:JSON.stringify({
+				resort_id: this.props.resortID
 			})
-			this.setState({data: displayResort[0]})
-			console.log(displayResort[0]);
 		})
+		.then(resp=>resp.json())
+		.then(data=>{
+			this.setState({
+				data: data
+			})
+		})
+		.catch(err=>console.log)
 	}
 
 	render(){
@@ -58,9 +63,9 @@ class ResortPage extends React.Component{
 							<div className={leaveReviewTabStyle} onClick={()=>this.changeReviewBox(true)}>Leave a Review</div>
 						</div>
 						{this.state.leaveReview === false ?
-							<SeeReviewBox/>
+							<SeeReviewBox resortID={this.state.data.resort_id} />
 						:
-							<LeaveReviewBox/>
+							<LeaveReviewBox userID={this.props.userData.user_id} resortID={this.state.data.resort_id}/>
 						}
 					</div>
 				</div>

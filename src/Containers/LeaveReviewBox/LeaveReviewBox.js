@@ -45,6 +45,43 @@ class LeaveReviewBox extends React.Component{
 		this.setState({priceRating:newRating})
 	}
 
+	onSubmit(){
+		if(this.state.overallRating=0){
+			alert(`You haven't filled in all the required fields.`)
+		}else{
+			fetch('https://mt-review-node.herokuapp.com/leave-review', {
+				method: 'post',
+				headers: {'Content Type': 'application/json'},
+				body:JSON.strinfigy({
+					total_score: this.state.overallRating,
+					powder_score: this.state.powderRating,
+					crowd_score: this.state.crowdRating,
+					village_score: this.state.villageRating,
+					price_score: this.state.priceRating
+				})
+			})
+			.then(resp=>resp.json())
+			.then(resp=>{
+				if(resp.status===200){
+					alert('Review submitted successfully.')
+					this.setState({
+						overallRating: 0,
+						powderRating: 0,
+						crowdRating: 0,
+						villageRating: 0,
+						priceRating: 0
+					})
+				}else{
+					alert('Problem submitting review.')
+				}
+			})
+			.catch(err=>{
+				console.log
+				alert('Error submitting review.')
+			})
+		}
+	}	
+
 	render(){
 		return(
 			<div className='leave-component-wrapper'>

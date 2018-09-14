@@ -105,7 +105,7 @@ class App extends Component {
             this.state.resortSelection === '' ?
             <ResortCards countrySelection={this.state.countrySelection} changeSelection={this.changeSelection}/>
           : 
-            <ResortPage resortSelection={this.state.resortSelection} />
+            <ResortPage resortSelection={this.state.resortSelection} userData={this.state.user}/>
           }
 
         </div>
