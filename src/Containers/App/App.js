@@ -61,7 +61,7 @@ class App extends Component {
     this.setState({modal:''})
     this.setState({user:{
       email:'',
-      fullName:'',
+      username:'',
       userID:''
     }})
   }
