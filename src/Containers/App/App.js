@@ -24,7 +24,11 @@ class App extends Component {
       user:{
         email:'',
         username:'',
-        userID:''
+        user_id:''
+      },
+      resort:{
+        resort_id:'',
+        resort_name:'',
       }
     }
 
@@ -52,7 +56,14 @@ class App extends Component {
     this.setState({user:{
       email: data.email,
       username: data.username,
-      userID: data.user_id
+      user_id: data.user_id
+    }})
+  }
+
+  loadResortData = (data)=>{
+    this.setState({resort:{
+      resort_id: data.resort_id,
+      resort_name: data.resort_name
     }})
   }
 
@@ -62,7 +73,7 @@ class App extends Component {
     this.setState({user:{
       email:'',
       username:'',
-      userID:''
+      user_id:''
     }})
   }
 
@@ -100,14 +111,13 @@ class App extends Component {
           
           {
             this.state.countrySelection === '' ?
-            <CountryCards changeSelection={this.changeSelection} countrySelection={this.state.countrySelection} />
+            <CountryCards changeSelection={this.changeSelection} />
           : 
             this.state.resortSelection === '' ?
             <ResortCards countrySelection={this.state.countrySelection} changeSelection={this.changeSelection}/>
           : 
-            <ResortPage resortSelection={this.state.resortSelection} userData={this.state.user}/>
+            <ResortPage resortSelection={this.state.resortSelection} userData={this.state.user} resortData={this.state.resort}/>
           }
-
         </div>
 
         {this.state.modal === 'Signup' &&

@@ -3,80 +3,81 @@ import './LeaveReviewBox.css';
 import ReactStars from 'react-stars'
 
 
-
-
 class LeaveReviewBox extends React.Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			overallRating:0,
-			powderRating:0,
-			crowdRating:0,
-			villageRating:0,
-			priceRating:0,
+			total_score:0,
+			powder_score:0,
+			crowd_score:0,
+			village_score:0,
+			price_score:0,
 		}
 
-		this.overallRatingChanged = this.overallRatingChanged.bind(this);
-		this.powderRatingChanged = this.powderRatingChanged.bind(this);
-		this.crowdRatingChanged = this.crowdRatingChanged.bind(this);
-		this.villageRatingChanged = this.villageRatingChanged.bind(this);
-		this.priceRatingChanged = this.priceRatingChanged.bind(this);
+		this.total_scoreChanged = this.total_scoreChanged.bind(this);
+		this.powder_scoreChanged = this.powder_scoreChanged.bind(this);
+		this.crowd_scoreChanged = this.crowd_scoreChanged.bind(this);
+		this.village_scoreChanged = this.village_scoreChanged.bind(this);
+		this.price_scoreChanged = this.price_scoreChanged.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 	
 	};
 
 
-	overallRatingChanged(newRating){
-		this.setState({overallRating:newRating})
+	total_scoreChanged(newRating){
+		this.setState({total_score:newRating})
 	}
 
-	powderRatingChanged(newRating){
-		this.setState({powderRating:newRating})
+	powder_scoreChanged(newRating){
+		this.setState({powder_score:newRating})
 	}
 
-	crowdRatingChanged(newRating){
-		this.setState({crowdRating:newRating})
+	crowd_scoreChanged(newRating){
+		this.setState({crowd_score:newRating})
 	}
 
-	villageRatingChanged(newRating){
-		this.setState({villageRating:newRating})
+	village_scoreChanged(newRating){
+		this.setState({village_score:newRating})
 	}
 
-	priceRatingChanged(newRating){
-		this.setState({priceRating:newRating})
+	price_scoreChanged(newRating){
+		this.setState({price_score:newRating})
 	}
 
 	onSubmit(){
-		if(this.state.overallRating=0){
+		if(this.state.total_score===0){
 			alert(`You haven't filled in all the required fields.`)
 		}else{
 			fetch('https://mt-review-node.herokuapp.com/leave-review', {
-				method: 'post',
+				method: 'put',
 				headers: {'Content Type': 'application/json'},
-				body:JSON.strinfigy({
-					total_score: this.state.overallRating,
-					powder_score: this.state.powderRating,
-					crowd_score: this.state.crowdRating,
-					village_score: this.state.villageRating,
-					price_score: this.state.priceRating
+				body:JSON.stringify({
+					user_id: this.props.userData.user_id,
+					resort_id: this.props.resortData.resort_id,
+					total_score: this.state.total_score,
+					powder_score: this.state.powder_score,
+					crowd_score: this.state.crowd_score,
+					village_score: this.state.village_score,
+					price_score: this.state.price_score
 				})
 			})
-			.then(resp=>resp.json())
 			.then(resp=>{
-				if(resp.status===200){
-					alert('Review submitted successfully.')
-					this.setState({
-						overallRating: 0,
-						powderRating: 0,
-						crowdRating: 0,
-						villageRating: 0,
-						priceRating: 0
-					})
-				}else{
-					alert('Problem submitting review.')
+				if(resp.ok){
+					resp.json()
 				}
 			})
+			.then(resp=>{
+					alert('Review submitted successfully.')
+					this.setState({
+						total_score: 0,
+						powder_score: 0,
+						crowd_score: 0,
+						village_score: 0,
+						price_score: 0
+					})
+			})
 			.catch(err=>{
-				console.log
+				console.log(err);
 				alert('Error submitting review.')
 			})
 		}
@@ -88,30 +89,30 @@ class LeaveReviewBox extends React.Component{
 				<div className='leave-reviews-wrapper'>
 					<div className='review-stars'>
 						<label>Overall Rating</label>
-						<ReactStars count={5} onChange={this.overallRatingChanged} size={40} color2={'#ffd700'} value={this.state.overallRating} />
+						<ReactStars count={5} onChange={this.total_scoreChanged} size={40} color2={'#ffd700'} value={this.state.total_score} />
 					</div>
 
 					<div className='review-stars'>
 						<label>Powder Rating</label>
-						<ReactStars count={5} onChange={this.powderRatingChanged} size={40} color2={'#ffd700'} value={this.state.powderRating} />
+						<ReactStars count={5} onChange={this.powder_scoreChanged} size={40} color2={'#ffd700'} value={this.state.powder_score} />
 					</div>
 
 					<div className='review-stars'>
 						<label>Crowd Rating</label>
-						<ReactStars count={5} onChange={this.crowdRatingChanged} size={40} color2={'#ffd700'} value={this.state.crowdRating} />
+						<ReactStars count={5} onChange={this.crowd_scoreChanged} size={40} color2={'#ffd700'} value={this.state.crowd_score} />
 					</div>
 
 					<div className='review-stars'>
 						<label>Village Rating</label>
-						<ReactStars count={5} onChange={this.villageRatingChanged} size={40} color2={'#ffd700'} value={this.state.villageRating} />
+						<ReactStars count={5} onChange={this.village_scoreChanged} size={40} color2={'#ffd700'} value={this.state.village_score} />
 					</div>
 
 					<div className='review-stars'>
 						<label>Price Rating</label>
-						<ReactStars count={5} onChange={this.priceRatingChanged} size={40} color2={'#ffd700'} value={this.state.priceRating} />
+						<ReactStars count={5} onChange={this.price_scoreChanged} size={40} color2={'#ffd700'} value={this.state.price_score} />
 					</div>				
 				</div>
-				<div className='submit-review-btn'>
+				<div className='submit-review-btn' onClick={this.onSubmit}>
 					Submit Review
 				</div>			
 			</div>

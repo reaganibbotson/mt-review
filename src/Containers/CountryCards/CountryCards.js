@@ -1,6 +1,6 @@
 import React from 'react';
 import './CountryCards.css';
-import Card from '../../Components/Card/Card';
+import CountryCard from '../../Components/CountryCard/CountryCard';
 
 class CountryCards extends React.Component{
 	constructor(props){
@@ -29,7 +29,7 @@ class CountryCards extends React.Component{
 					<h3>Mt Review is here to help! Pick your destination.</h3>
 				</div>
 				<div className='flex-on-em spacing'>
-					<Card Data={this.state.data} changeSelection={this.props.changeSelection} countrySelction={this.props.countrySelction} />
+					<CountryCard Data={this.state.data} changeSelection={this.props.changeSelection} />
 				</div>
 			</div>
 		);

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Card/Card.css';
+import '../CountryCard/CountryCard.css';
 
 function ResortCard(props){
 

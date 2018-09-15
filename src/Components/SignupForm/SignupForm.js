@@ -47,7 +47,7 @@ class SignupForm extends React.Component {
 		})
 		.then(response=>response.json())
 		.then(user => {
-			console.log
+			console.log(user);
 			this.props.changeModal('')
 			if(user.user_id){
 				this.props.logInUser(user);
