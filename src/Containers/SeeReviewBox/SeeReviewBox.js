@@ -16,13 +16,13 @@ class SeeReviewBox extends React.Component{
 	};
 
 	componentDidMount(){
-		fetch('https://mt-review-node.herokuapp.com/see-review',{
+		fetch(`https://mt-review-node.herokuapp.com/see-review`,{
 			method:'post',
 			headers:{
 				'Content Type':'application/json'
 			},
 			body: JSON.stringify({
-				resortID: this.props.resortID
+				resort_id: this.props.resortData.resort_id
 			})
 		})
 		.then(response => response.json())
@@ -35,7 +35,7 @@ class SeeReviewBox extends React.Component{
 				priceRating: data.price_score
 			})
 		})
-		.catch(err=> alert(`Couldn't retrieve reviews: ${err}`))
+		.catch(err=> console.log(`Couldn't retrieve reviews: ${err}`))
 	}
 
 	render(){

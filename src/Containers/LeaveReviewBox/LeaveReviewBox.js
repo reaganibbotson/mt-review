@@ -47,6 +47,8 @@ class LeaveReviewBox extends React.Component{
 	onSubmit(){
 		if(this.state.total_score===0){
 			alert(`You haven't filled in all the required fields.`)
+		}else if(!this.props.userData.user_id){
+			alert('Must be logged in to leave review.')
 		}else{
 			fetch('https://mt-review-node.herokuapp.com/leave-review', {
 				method: 'put',
