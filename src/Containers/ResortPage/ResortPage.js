@@ -8,6 +8,7 @@ class ResortPage extends React.Component{
 		super(props);
 		this.state = {
 			leaveReview:false,
+			loadReviews: false
 		}
 
 	}
@@ -20,10 +21,11 @@ class ResortPage extends React.Component{
 		fetch(`https://mt-review-node.herokuapp.com/resort/${this.props.resortSelection}`)
 		.then(resp=>resp.json())
 		.then(data=>{
-			this.props.loadResortData(data);
 			console.log(data);
+			console.log(this.props.resortSelection);
+			this.props.loadResortData(data);
 		})
-		.catch(err=>console.log);
+		.catch(err=>console.log)			
 	}
 
 	render(){
@@ -44,7 +46,7 @@ class ResortPage extends React.Component{
 				</h1>
 				<div className='grid'>
 					<div className='full-grid-row row2'>
-						<p>Insert image/s here?</p>
+						<p>Insert image/s here? {this.props.resortData.resort_id}</p>
 					</div>
 					<div className='centred-grid-row row3'>
 						<p>Insert description/blurb here.</p>
@@ -55,7 +57,7 @@ class ResortPage extends React.Component{
 							<div className={leaveReviewTabStyle} onClick={()=>this.changeReviewBox(true)}>Leave a Review</div>
 						</div>
 						{this.state.leaveReview === false ?
-							<SeeReviewBox resortData={this.props.resortData} />
+							<SeeReviewBox resortData={this.props.resortData}/>
 						:
 							<LeaveReviewBox userData={this.props.userData} resortData={this.props.resortData}/>
 						}

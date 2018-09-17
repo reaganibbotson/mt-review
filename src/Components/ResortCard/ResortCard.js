@@ -2,7 +2,7 @@ import React from 'react';
 import '../CountryCard/CountryCard.css';
 
 function ResortCard(props){
-
+	
 	const ResortList = props.Data.map((card, i)=>{
 
 		return(

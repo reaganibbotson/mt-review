@@ -61,6 +61,7 @@ class App extends Component {
   }
 
   loadResortData = (data)=>{
+    console.log(`resort data: ${data}`)
     this.setState({resort:{
       resort_id: data.resort_id,
       resort_name: data.resort_name
