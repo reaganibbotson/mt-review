@@ -11,6 +11,7 @@ class LoginForm extends React.Component{
 		this.updateEmail = this.updateEmail.bind(this);
 		this.updatePassword = this.updatePassword.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
+		this.onEnter = this.onEnter.bind(this);
 	}
 
 	updateEmail(e){
@@ -25,23 +26,33 @@ class LoginForm extends React.Component{
 		})
 	}
 
+	onEnter(e){
+		if(e.key === 'Enter'){
+			this.onSubmit;
+		}
+	}
+
 	onSubmit(){
-		fetch('https://mt-review-node.herokuapp.com/login', {
-			method: 'post',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				email: this.state.email,
-				password: this.state.password
+		if(!this.state.email || !this.state.password){
+			alert('Please fill in all required forms.')
+		}else{
+			fetch('https://mt-review-node.herokuapp.com/login', {
+				method: 'post',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({
+					email: this.state.email,
+					password: this.state.password
+				})
 			})
-		})
-		.then(response=>response.json())
-		.then(user => {
-			if(user.user_id){
-				console.log(user.user_id);
-				this.props.changeModal('');
-				this.props.logInUser(user);			
-			}
-		})
+			.then(response=>response.json())
+			.then(user => {
+				if(user.user_id){
+					console.log(user.user_id);
+					this.props.changeModal('');
+					this.props.logInUser(user);			
+				}
+			})
+		}
 	}
 
 
@@ -58,7 +69,7 @@ class LoginForm extends React.Component{
 					</div>
 					<div>
 						<div>Password</div>
-						<input type="password" placeholder='Enter your password here' onChange={this.updatePassword}/>
+						<input type="password" placeholder='Enter your password here' onChange={this.updatePassword} onKeyPress={this.onEnter}/>
 					</div>
 					<div className="flex-center buttons-container">
 						<div className='login-button' onClick={this.onSubmit}>Login</div>

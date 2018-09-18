@@ -4,7 +4,7 @@ import './SignupForm.css';
 class SignupForm extends React.Component {
 	constructor(props){
 		super(props);
-
+		
 		this.state = {
 			email:'',
 			username:'',
@@ -15,6 +15,7 @@ class SignupForm extends React.Component {
 		this.updateUsername = this.updateUsername.bind(this);
 		this.updatePassword = this.updatePassword.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
+		this.onEnter = this.onEnter.bind(this);
 	}
 
 	updateEmail(e){
@@ -35,24 +36,34 @@ class SignupForm extends React.Component {
 		})
 	}
 
+	onEnter(e){
+		if(e.key === 'Enter'){
+			this.onSubmit
+		}
+	}
+
 	onSubmit(){
-		fetch('https://mt-review-node.herokuapp.com/signup', {
-			method: 'post',
-			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify({
-				email: this.state.email,
-				username: this.state.username,
-				password: this.state.password
+		if(!this.state.email || !this.state.username || !this.state.password){
+			alert('Please fill in all required forms.')
+		}else{
+			fetch('https://mt-review-node.herokuapp.com/signup', {
+				method: 'post',
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({
+					email: this.state.email,
+					username: this.state.username,
+					password: this.state.password
+				})
 			})
-		})
-		.then(response=>response.json())
-		.then(user => {
-			console.log(user);
-			this.props.changeModal('')
-			if(user.user_id){
-				this.props.logInUser(user);
-			}
-		})
+			.then(response=>response.json())
+			.then(user => {
+				console.log(user);
+				this.props.changeModal('')
+				if(user.user_id){
+					this.props.logInUser(user);
+				}
+			})
+		}
 	}
 
 
@@ -73,7 +84,7 @@ class SignupForm extends React.Component {
 						</div>
 						<div>
 							<div>Password</div>
-							<input type="password" placeholder='Enter your password here' onChange={this.updatePassword}/>
+							<input type="password" placeholder='Enter your password here' onChange={this.updatePassword} onKeyPress={this.onEnter}/>
 						</div>
 						<div className="flex-center buttons-container">
 							<div className='signup-button' onClick={this.onSubmit}>Signup</div>
