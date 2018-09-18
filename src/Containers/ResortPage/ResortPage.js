@@ -8,7 +8,14 @@ class ResortPage extends React.Component{
 		super(props);
 		this.state = {
 			leaveReview:false,
-			loadReviews: false
+			loadReviews: false,
+			reviewData:{
+				overallRating: 0,
+				powderRating: 0,
+				crowdRating: 0,
+				villageRating: 0,
+				priceRating: 0
+			}
 		}
 
 	}
@@ -23,6 +30,15 @@ class ResortPage extends React.Component{
 		.then(data=>{
 			console.log(data);
 			console.log(this.props.resortSelection);
+			this.setState({
+				reviews:{
+					overallRating:data.total_score,
+					powderRating: data.powder_score,
+					crowdRating: data.crowd_score,
+					villageRating: data.village_score,
+					priceRating: data.price_score
+				}
+			})
 			this.props.loadResortData(data);
 		})
 		.catch(err=>console.log)			
@@ -57,7 +73,7 @@ class ResortPage extends React.Component{
 							<div className={leaveReviewTabStyle} onClick={()=>this.changeReviewBox(true)}>Leave a Review</div>
 						</div>
 						{this.state.leaveReview === false ?
-							<SeeReviewBox resortData={this.props.resortData}/>
+							<SeeReviewBox resortData={this.props.resortData} reviewData={this.state.reviewData}/>
 						:
 							<LeaveReviewBox userData={this.props.userData} resortData={this.props.resortData}/>
 						}

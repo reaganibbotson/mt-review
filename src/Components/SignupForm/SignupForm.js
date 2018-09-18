@@ -38,7 +38,7 @@ class SignupForm extends React.Component {
 
 	onEnter(e){
 		if(e.key === 'Enter'){
-			this.onSubmit
+			this.onSubmit();
 		}
 	}
 
