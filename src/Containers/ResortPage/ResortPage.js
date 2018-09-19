@@ -28,10 +28,9 @@ class ResortPage extends React.Component{
 		fetch(`https://mt-review-node.herokuapp.com/resort/${this.props.resortSelection}`)
 		.then(resp=>resp.json())
 		.then(data=>{
-			console.log(data);
-			console.log(this.props.resortSelection);
+			console.log(data.total_score);
 			this.setState({
-				reviews:{
+				reviewData:{
 					overallRating:data.total_score,
 					powderRating: data.powder_score,
 					crowdRating: data.crowd_score,
@@ -41,8 +40,9 @@ class ResortPage extends React.Component{
 			})
 			this.props.loadResortData(data);
 		})
-		.catch(err=>console.log)			
+		.catch(err=>console.log)
 	}
+
 
 	render(){
 		

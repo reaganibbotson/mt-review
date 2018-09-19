@@ -51,7 +51,7 @@ class LeaveReviewBox extends React.Component{
 		}else if(!this.props.userData.user_id){
 			alert('Must be logged in to leave review.')
 		}else{
-			fetch('https://mt-review-node.herokuapp.com/leave-review', {
+			fetch('https://mt-review-node.herokuapp.com/leavereview', {
 				method: 'put',
 				headers: {'Content Type': 'application/json'},
 				body:JSON.stringify({
