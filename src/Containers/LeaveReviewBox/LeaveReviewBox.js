@@ -45,7 +45,6 @@ class LeaveReviewBox extends React.Component{
 	}
 
 	onSubmit(){
-		console.log(this.props.resortData.resort_id);
 		if(this.state.total_score===0){
 			alert(`You haven't filled in all the required fields.`)
 		}else if(!this.props.userData.user_id){
@@ -67,6 +66,8 @@ class LeaveReviewBox extends React.Component{
 			.then(resp=>{
 				if(resp.ok){
 					resp.json()
+				}else{
+					alert('Server error.')
 				}
 			})
 			.then(resp=>{
