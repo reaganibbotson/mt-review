@@ -52,10 +52,10 @@ class LeaveReviewBox extends React.Component{
 		}else{
 			fetch('https://mt-review-node.herokuapp.com/leavereview', {
 				method: 'put',
-				headers: {'Content Type': 'application/json'},
-				body:JSON.stringify({
+				headers: {'Content-Type': 'application/json'},
+				body: JSON.stringify({
 					user_id: this.props.userData.user_id,
-					resort_id: this.props.resortData.resort_id,
+					resort_id: this.props.resortSelection,
 					total_score: this.state.total_score,
 					powder_score: this.state.powder_score,
 					crowd_score: this.state.crowd_score,

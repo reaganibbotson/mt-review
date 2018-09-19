@@ -75,7 +75,7 @@ class ResortPage extends React.Component{
 						{this.state.leaveReview === false ?
 							<SeeReviewBox resortData={this.props.resortData} reviewData={this.state.reviewData}/>
 						:
-							<LeaveReviewBox userData={this.props.userData} resortData={this.props.resortData}/>
+							<LeaveReviewBox userData={this.props.userData} resortData={this.props.resortData} resortSelection={this.props.resortSelection}/>
 						}
 					</div>
 				</div>
