@@ -60,14 +60,6 @@ class App extends Component {
     }})
   }
 
-  loadResortData = (data)=>{
-    console.log(`resort data: ${data}`)
-    this.setState({resort:{
-      resort_id: data.resort_id,
-      resort_name: data.resort_name
-    }})
-  }
-
   signOutUser(){
     this.setState({loggedIn: false})
     this.setState({modal:''})
@@ -117,7 +109,7 @@ class App extends Component {
             this.state.resortSelection === '' ?
             <ResortCards countrySelection={this.state.countrySelection} changeSelection={this.changeSelection}/>
           : 
-            <ResortPage resortSelection={this.state.resortSelection} userData={this.state.user} resortData={this.state.resort}/>
+            <ResortPage resortSelection={this.state.resortSelection} userData={this.state.user}/>
           }
         </div>
 
