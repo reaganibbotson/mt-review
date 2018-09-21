@@ -8,7 +8,8 @@ class SignupForm extends React.Component {
 		this.state = {
 			email:'',
 			username:'',
-			password:''
+			password:'',
+			style: ''
 		}
 
 		this.updateEmail = this.updateEmail.bind(this);
@@ -22,18 +23,33 @@ class SignupForm extends React.Component {
 		this.setState({
 			email: e.target.value
 		})
+		if(this.state.style === 'required-error'){
+			this.setState({
+				style: ''
+			})
+		}
 	}
 
 	updateUsername(e){
 		this.setState({
 			username: e.target.value
 		})
+		if(this.state.style === 'required-error'){
+			this.setState({
+				style: ''
+			})
+		}
 	}
 
 	updatePassword(e){
 		this.setState({
 			password: e.target.value
 		})
+		if(this.state.style === 'required-error'){
+			this.setState({
+				style: ''
+			})
+		}
 	}
 
 	onEnter(e){
@@ -44,6 +60,9 @@ class SignupForm extends React.Component {
 
 	onSubmit(){
 		if(!this.state.email || !this.state.username || !this.state.password){
+			this.setState({
+				style: 'required-error'
+			})
 			alert('Please fill in all required forms.')
 		}else{
 			fetch('https://mt-review-node.herokuapp.com/signup', {
@@ -76,15 +95,15 @@ class SignupForm extends React.Component {
 				<div className='flex-center signup-form'>
 						<div>
 							<div>Email</div>
-							<input autoFocus type='email' placeholder='Enter your email here' onChange={this.updateEmail}/>	
+							<input className={this.state.style} autoFocus type='email' placeholder='Enter your email here' onChange={this.updateEmail}/>	
 						</div>
 						<div>
 							<div>Userame</div>
-							<input type="text" placeholder='Enter your username here' onChange={this.updateUsername}/>
+							<input className={this.state.style} type="text" placeholder='Enter your username here' onChange={this.updateUsername}/>
 						</div>
 						<div>
 							<div>Password</div>
-							<input type="password" placeholder='Enter your password here' onChange={this.updatePassword} onKeyPress={this.onEnter}/>
+							<input className={this.state.style} type="password" placeholder='Enter your password here' onChange={this.updatePassword} onKeyPress={this.onEnter}/>
 						</div>
 						<div className="flex-center buttons-container">
 							<div className='signup-button' onClick={this.onSubmit}>Signup</div>

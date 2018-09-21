@@ -56,3 +56,21 @@
 .buttons-container{
 	flex-direction: row;
 }
+
+.required-error{
+	background-color: rgb(255, 129, 129, 0.4);
+	border:1px solid rgb(255, 61, 61);
+}
+
+.required-error::placeholder{
+	color: rgb(255, 20, 20);
+}
+
+.required-error:focus{
+	background-color: white;
+	border: 1px solid black;
+}
+
+.required-error:focus::placeholder{
+	color: rgba(0,0,0,0.8);
+}

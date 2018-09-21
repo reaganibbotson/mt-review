@@ -6,7 +6,8 @@ class LoginForm extends React.Component{
 		super(props);
 		this.state = {
 			email: '',
-			password: ''
+			password: '',
+			style: ''
 		}
 		this.updateEmail = this.updateEmail.bind(this);
 		this.updatePassword = this.updatePassword.bind(this);
@@ -18,12 +19,22 @@ class LoginForm extends React.Component{
 		this.setState({
 			email: e.target.value
 		})
+		if(this.state.style === 'required-error'){
+			this.setState({
+				style: ''
+			})
+		}
 	}
 
 	updatePassword(e){
 		this.setState({
 			password: e.target.value
 		})
+		if(this.state.style === 'required-error'){
+			this.setState({
+				style: ''
+			})
+		}
 	}
 
 	onEnter(e){
@@ -34,8 +45,14 @@ class LoginForm extends React.Component{
 
 	onSubmit(){
 		if(!this.state.email || !this.state.password){
+			this.setState({
+				style: 'required-error'
+			})
 			alert('Please fill in all required forms.')
 		}else{
+			this.setState({
+				style:''
+			})
 			fetch('https://mt-review-node.herokuapp.com/login', {
 				method: 'post',
 				headers: {'Content-Type': 'application/json'},
@@ -65,11 +82,11 @@ class LoginForm extends React.Component{
 				<div className='login-form flex-center'>
 					<div>
 						<div>Email</div>
-						<input autoFocus type='email' placeholder='Enter your email here' onChange={this.updateEmail}/>	
+						<input className={this.state.style} autoFocus type='email' placeholder='Enter your email here' onChange={this.updateEmail}/>	
 					</div>
 					<div>
 						<div>Password</div>
-						<input type="password" placeholder='Enter your password here' onChange={this.updatePassword} onKeyPress={this.onEnter}/>
+						<input className={this.state.style} type="password" placeholder='Enter your password here' onChange={this.updatePassword} onKeyPress={this.onEnter}/>
 					</div>
 					<div className="flex-center buttons-container">
 						<div className='login-button' onClick={this.onSubmit}>Login</div>
