@@ -10,6 +10,8 @@ import ResortPage from '../ResortPage/ResortPage';
 import SignOutForm from '../../Components/SignOutForm/SignOutForm';
 import './App.css';
 
+import MessageBox from '../../Components/MessageBox/MessageBox';
+
 class App extends Component {
   constructor(props){
     super(props);
@@ -111,6 +113,8 @@ class App extends Component {
           : 
             <ResortPage resortSelection={this.state.resortSelection} userData={this.state.user}/>
           }
+
+          <MessageBox colour='green'>Successfully Signed In</MessageBox>
         </div>
 
         {this.state.modal === 'Signup' &&
