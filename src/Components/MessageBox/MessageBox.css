@@ -20,3 +20,21 @@
 	border: 2px solid rgb(158, 23, 23);
 	color:rgb(73, 7, 7)
 }
+
+.msg-box-enter{
+	opacity: 0.1;
+}
+
+.msg-box-enter-active{
+	opacity: 1;
+	transition: all 300ms;
+}
+
+.msg-box-exit{
+	opacity: 1;
+}
+
+.msg-box-exit-active{
+	opacity: 0.1;
+	transition: all 300ms;
+}

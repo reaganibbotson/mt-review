@@ -31,6 +31,11 @@ class App extends Component {
       resort:{
         resort_id:'',
         resort_name:'',
+      },
+      messageBox:{
+        status: 'inactive',
+        message:'',
+        colour:'green'
       }
     }
 
@@ -51,6 +56,16 @@ class App extends Component {
         route: newRoute
       })
     }
+  }
+
+  setMessageBox = (status, message, colour) =>{
+    this.setState({
+      messageBox:{
+        status: status,
+        message: message,
+        colour: colour
+      }
+    })
   }
 
   logInUser=(data)=>{
@@ -89,6 +104,15 @@ class App extends Component {
     setTimeout(()=>{
       this.setState({ fadeIn: !this.state.fadeIn })
     }, 100);
+    setTimeout(()=>{
+      this.setState({
+        messageBox: {
+          status: 'active',
+          message:'test',
+          colour:'green'
+        }
+      })
+    }, 300)
   }
 
   render() {
@@ -101,30 +125,62 @@ class App extends Component {
 
     return (
       <div className="App">
+
+        <MessageBox 
+          setMessageBox={this.setMessageBox} 
+          status={this.state.messageBox.status} 
+          message={this.state.messageBox.message} 
+          colour={this.state.messageBox.colour}
+        />
+        
         <div className={fadeIn}>
-          <TopBar changeModal={this.changeModal} changeRoute={this.changeRoute} loggedIn={this.state.loggedIn} logOutUser={this.logInUser}/>
+          <TopBar 
+            changeModal={this.changeModal} 
+            changeRoute={this.changeRoute} 
+            loggedIn={this.state.loggedIn} 
+            logOutUser={this.logInUser}
+          />
           
           {
             this.state.countrySelection === '' ?
             <CountryCards changeSelection={this.changeSelection} />
           : 
             this.state.resortSelection === '' ?
-            <ResortCards countrySelection={this.state.countrySelection} changeSelection={this.changeSelection}/>
+            <ResortCards 
+              countrySelection={this.state.countrySelection} 
+              changeSelection={this.changeSelection}
+            />
           : 
-            <ResortPage resortSelection={this.state.resortSelection} userData={this.state.user}/>
+            <ResortPage 
+              resortSelection={this.state.resortSelection} 
+              userData={this.state.user}
+            />
           }
-
-          <MessageBox colour='green'>Successfully Signed In</MessageBox>
         </div>
 
         {this.state.modal === 'Signup' &&
-          <ModalWindow changeModal={this.changeModal}><SignupForm changeModal={this.changeModal} logInUser={this.logInUser}></SignupForm></ModalWindow>
+          <ModalWindow changeModal={this.changeModal}>
+            <SignupForm 
+              changeModal={this.changeModal} 
+              logInUser={this.logInUser}
+            />
+          </ModalWindow>
         }
         {this.state.modal === 'Login' &&
-          <ModalWindow changeModal={this.changeModal}><LoginForm changeModal={this.changeModal} logInUser={this.logInUser}></LoginForm></ModalWindow>
+          <ModalWindow changeModal={this.changeModal}>
+            <LoginForm 
+              changeModal={this.changeModal} 
+              logInUser={this.logInUser}
+            />
+          </ModalWindow>
         }
         {this.state.modal === 'Sign Out' &&
-          <ModalWindow changeModal={this.changeModal}><SignOutForm changeModal={this.changeModal} signOutUser={this.signOutUser}></SignOutForm></ModalWindow>
+          <ModalWindow changeModal={this.changeModal}>
+            <SignOutForm 
+              changeModal={this.changeModal} 
+              signOutUser={this.signOutUser}
+            />
+          </ModalWindow>
         }
       </div>
     );

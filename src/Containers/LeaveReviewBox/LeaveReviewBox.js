@@ -93,27 +93,57 @@ class LeaveReviewBox extends React.Component{
 				<div className='leave-reviews-wrapper'>
 					<div className='review-stars'>
 						<label>Overall Rating</label>
-						<ReactStars count={5} onChange={this.total_scoreChanged} size={40} color2={'#ffd700'} value={this.state.total_score} />
+						<ReactStars 
+							count={5} 
+							onChange={this.total_scoreChanged} 
+							size={40} 
+							color2={'#ffd700'} 
+							value={this.state.total_score} 
+						/>
 					</div>
 
 					<div className='review-stars'>
 						<label>Powder Rating</label>
-						<ReactStars count={5} onChange={this.powder_scoreChanged} size={40} color2={'#ffd700'} value={this.state.powder_score} />
+						<ReactStars 
+							count={5} 
+							onChange={this.powder_scoreChanged}
+							size={40}
+							color2={'#ffd700'}
+							value={this.state.powder_score} 
+						/>
 					</div>
 
 					<div className='review-stars'>
 						<label>Crowd Rating</label>
-						<ReactStars count={5} onChange={this.crowd_scoreChanged} size={40} color2={'#ffd700'} value={this.state.crowd_score} />
+						<ReactStars 
+							count={5} 
+							onChange={this.crowd_scoreChanged} 
+							size={40} 
+							color2={'#ffd700'} 
+							value={this.state.crowd_score} 
+						/>
 					</div>
 
 					<div className='review-stars'>
 						<label>Village Rating</label>
-						<ReactStars count={5} onChange={this.village_scoreChanged} size={40} color2={'#ffd700'} value={this.state.village_score} />
+						<ReactStars 
+							count={5} 
+							onChange={this.village_scoreChanged} 
+							size={40} 
+							color2={'#ffd700'} 
+							value={this.state.village_score} 
+						/>
 					</div>
 
 					<div className='review-stars'>
 						<label>Price Rating</label>
-						<ReactStars count={5} onChange={this.price_scoreChanged} size={40} color2={'#ffd700'} value={this.state.price_score} />
+						<ReactStars 
+							count={5} 
+							onChange={this.price_scoreChanged} 
+							size={40} 
+							color2={'#ffd700'} 
+							value={this.state.price_score} 
+						/>
 					</div>				
 				</div>
 				<div className='submit-review-btn' onClick={this.onSubmit}>

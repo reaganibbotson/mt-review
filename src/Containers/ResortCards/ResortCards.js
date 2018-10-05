@@ -29,7 +29,11 @@ class ResortCards extends React.Component{
 					<h3>Click a resort to see more info!</h3>
 				</div>
 				<div className='flex-on-em spacing'>
-					<ResortCard Data={this.state.data} changeSelection={this.props.changeSelection} countrySelection={this.props.countrySelection}/>
+					<ResortCard 
+						Data={this.state.data} 
+						changeSelection={this.props.changeSelection} 
+						countrySelection={this.props.countrySelection}
+					/>
 				</div>
 			</div>
 		);

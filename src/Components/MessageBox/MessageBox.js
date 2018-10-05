@@ -1,35 +1,26 @@
 import React from 'react';
 import './MessageBox.css';
+import { CSSTransition } from 'react-transition-group';
 
 class MessageBox extends React.Component{
-	constructor(props){
-		super(props);
-
-		this.state = {
-			visible: true
-		}
-	}
-
-	componentDidMount(){
+	componentDidUpdate(){
 		setTimeout(()=>{
-			this.setState({visible: false})
-		}, 3000)
+			this.props.setMessageBox('inactive','','green')
+		}, 300)
 	}
-	
 
 	render(){	
-		let style = ''
-		if(this.props.colour === 'green'){
-			style = 'message-box green'
-		} else {
-			style = 'message-box red'
-		}
-
 		return(
-			this.state.visible &&
-				<div className={style}>
-					{this.props.children}
-				</div>
+				<CSSTransition
+					in={this.props.status==='active'}
+					out={this.props.status==='inactive'}
+					timeout={300}
+					classNames="msg-box"
+				>
+					<div className={`message-box ${this.props.colour}`}>
+						{this.props.message}
+					</div>
+				</CSSTransition>
 		);
 	}
 }

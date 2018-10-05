@@ -81,9 +81,16 @@ class ResortPage extends React.Component{
 							<div className={leaveReviewTabStyle} onClick={()=>this.changeReviewBox(true)}>Leave a Review</div>
 						</div>
 						{this.state.leaveReview === false ?
-							<SeeReviewBox resortData={this.state.resortData} reviewData={this.state.reviewData}/>
+							<SeeReviewBox 
+								resortData={this.state.resortData} 
+								reviewData={this.state.reviewData}
+							/>
 						:
-							<LeaveReviewBox userData={this.props.userData} resortData={this.state.resortData} resortSelection={this.props.resortSelection}/>
+							<LeaveReviewBox 
+								userData={this.props.userData} 
+								resortData={this.state.resortData} 
+								resortSelection={this.props.resortSelection}
+							/>
 						}
 					</div>
 				</div>
