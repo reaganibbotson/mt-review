@@ -33,9 +33,9 @@ class App extends Component {
         resort_name:'',
       },
       messageBox:{
-        status: 'inactive',
+        status: false,
         message:'',
-        colour:'green'
+        colour:''
       }
     }
 
@@ -104,6 +104,7 @@ class App extends Component {
     setTimeout(()=>{
       this.setState({ fadeIn: !this.state.fadeIn })
     }, 100);
+    // Trigger message box
     setTimeout(()=>{
       this.setState({
         messageBox: {
@@ -112,7 +113,7 @@ class App extends Component {
           colour:'green'
         }
       })
-    }, 300)
+    }, 3000)
   }
 
   render() {

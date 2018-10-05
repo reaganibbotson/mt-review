@@ -70,11 +70,12 @@ input::placeholder{
 }
 
 
-.faded{
+.fade-appear{
 	opacity: 0;
 	transition: all 600ms;
 }
 
-.in {
+.fade-appear-active {
 	opacity: 1;
+	transition: all 600ms;
 }
