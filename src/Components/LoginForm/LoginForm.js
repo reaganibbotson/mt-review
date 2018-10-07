@@ -64,6 +64,7 @@ class LoginForm extends React.Component{
 			.then(response=>response.json())
 			.then(user => {
 				if(user.user_id){
+					this.props.setMessageBox(true, "Successfully logged in!", "green");
 					console.log(user.user_id);
 					this.props.changeModal('');
 					this.props.logInUser(user);			

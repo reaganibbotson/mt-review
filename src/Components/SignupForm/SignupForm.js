@@ -80,6 +80,7 @@ class SignupForm extends React.Component {
 				this.props.changeModal('')
 				if(user.user_id){
 					this.props.logInUser(user);
+					this.props.setMessageBox(true, "Successfully signed up", "green");
 				}
 			})
 		}

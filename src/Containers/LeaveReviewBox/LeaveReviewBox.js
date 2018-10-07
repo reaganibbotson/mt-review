@@ -71,7 +71,7 @@ class LeaveReviewBox extends React.Component{
 				}
 			})
 			.then(resp=>{
-					alert('Review submitted successfully.')
+					this.props.setMessageBox(true, "Review submitted successfully", "green")
 					this.setState({
 						total_score: 0,
 						powder_score: 0,

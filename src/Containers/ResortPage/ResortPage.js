@@ -90,6 +90,7 @@ class ResortPage extends React.Component{
 								userData={this.props.userData} 
 								resortData={this.state.resortData} 
 								resortSelection={this.props.resortSelection}
+								setMessageBox={this.props.setMessageBox}
 							/>
 						}
 					</div>

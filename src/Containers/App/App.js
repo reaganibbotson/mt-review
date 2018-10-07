@@ -155,6 +155,7 @@ class App extends Component {
             <ResortPage 
               resortSelection={this.state.resortSelection} 
               userData={this.state.user}
+              setMessageBox={this.setMessageBox}
             />
           }
         </div>
@@ -164,6 +165,7 @@ class App extends Component {
             <SignupForm 
               changeModal={this.changeModal} 
               logInUser={this.logInUser}
+              setMessageBox={this.setMessageBox}
             />
           </ModalWindow>
         }
@@ -172,6 +174,7 @@ class App extends Component {
             <LoginForm 
               changeModal={this.changeModal} 
               logInUser={this.logInUser}
+              setMessageBox={this.setMessageBox}
             />
           </ModalWindow>
         }

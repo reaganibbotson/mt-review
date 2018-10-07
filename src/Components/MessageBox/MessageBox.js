@@ -6,7 +6,7 @@ class MessageBox extends React.Component{
 	componentDidUpdate(){
 		if(this.props.status){
 			setTimeout(()=>{
-				this.props.setMessageBox(false,'','')
+				this.props.setMessageBox(false,'','clear')
 			}, 3000)
 		}
 	}
