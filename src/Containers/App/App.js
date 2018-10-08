@@ -104,16 +104,6 @@ class App extends Component {
     setTimeout(()=>{
       this.setState({ fadeIn: !this.state.fadeIn })
     }, 100);
-    // Trigger message box
-    setTimeout(()=>{
-      this.setState({
-        messageBox: {
-          status: 'active',
-          message:'test',
-          colour:'green'
-        }
-      })
-    }, 3000)
   }
 
   render() {

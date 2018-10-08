@@ -22,19 +22,22 @@
 	justify-content: center;	
 	align-items: center;	
 	align-self: flex-start;	
-	height: 15%;	
-	width: 100%;	
+	width: 100%;
+	min-height: 25%;
 	background-color: rgb(23, 26, 45);	
 	margin: 0px;	
 	padding: 10px 0px;	
 	color: white;	
 	font-weight: 700;	
-	font-size: 250%;	
+	font-size: 230%;	
 	border-top-left-radius: 20px;	
 	border-top-right-radius: 20px;	
 }	
- .card-content{	
- }	
+.card-title p{
+	padding: 0px;
+	margin: 0px;
+}	
+
  .card-clicker{	
 	min-width: 250px;	
 	min-height: 400px;	

@@ -8,7 +8,7 @@ import './CountryCard.css';
 				<div className='card-title'>	
 					<p>{card.region}</p>	
 				</div>	
-				<div className='card-content'>	
+				<div>	
 					<p>{card.region}</p>	
 				</div>	
 			</div>	

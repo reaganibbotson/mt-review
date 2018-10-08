@@ -10,7 +10,7 @@ function ResortCard(props){
 				<div className='card-title'>
 					<p>{card.resort_name}</p>
 				</div>
-				<div className='card-content'>
+				<div>
 					<p>{card.resort_name}</p>
 				</div>
 			</div>
