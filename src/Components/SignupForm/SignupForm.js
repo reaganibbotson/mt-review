@@ -1,4 +1,5 @@
 import React from 'react';
+import LoadingCover from '../LoadingCover/LoadingCover';
 import './SignupForm.css';
 
 class SignupForm extends React.Component {
@@ -9,7 +10,8 @@ class SignupForm extends React.Component {
 			email:'',
 			username:'',
 			password:'',
-			style: ''
+			style: '',
+			loading: false
 		}
 
 		this.updateEmail = this.updateEmail.bind(this);
@@ -63,8 +65,9 @@ class SignupForm extends React.Component {
 			this.setState({
 				style: 'required-error'
 			})
-			alert('Please fill in all required forms.')
+			this.props.setMessageBox(true,'Fill in all required fields', 'red');
 		}else{
+			this.setState({loading: true})
 			fetch('https://mt-review-node.herokuapp.com/signup', {
 				method: 'post',
 				headers: {'Content-Type': 'application/json'},
@@ -76,8 +79,10 @@ class SignupForm extends React.Component {
 			})
 			.then(response=>response.json())
 			.then(user => {
+				this.setState({loading:false})
 				console.log(user);
 				this.props.changeModal('')
+				this.props.setMessageBox(true,'Problem signing up', 'red');
 				if(user.user_id){
 					this.props.logInUser(user);
 					this.props.setMessageBox(true, "Successfully signed up", "green");
@@ -94,22 +99,25 @@ class SignupForm extends React.Component {
 					Signup To Mt Review
 				</div>
 				<div className='flex-center signup-form'>
-						<div>
-							<div>Email</div>
-							<input className={this.state.style} autoFocus type='email' placeholder='Enter your email here' onChange={this.updateEmail}/>	
-						</div>
-						<div>
-							<div>Userame</div>
-							<input className={this.state.style} type="text" placeholder='Enter your username here' onChange={this.updateUsername}/>
-						</div>
-						<div>
-							<div>Password</div>
-							<input className={this.state.style} type="password" placeholder='Enter your password here' onChange={this.updatePassword} onKeyPress={this.onEnter}/>
-						</div>
-						<div className="flex-center buttons-container">
-							<div className='signup-button' onClick={this.onSubmit}>Signup</div>
-							<div className='signup-button cancel-button' onClick={()=>{this.props.changeModal('')}}>Cancel</div>
-						</div>
+					{this.state.loading &&
+						<LoadingCover/>
+					}
+					<div>
+						<div>Email</div>
+						<input className={this.state.style} autoFocus type='email' placeholder='Enter your email here' onChange={this.updateEmail}/>	
+					</div>
+					<div>
+						<div>Userame</div>
+						<input className={this.state.style} type="text" placeholder='Enter your username here' onChange={this.updateUsername}/>
+					</div>
+					<div>
+						<div>Password</div>
+						<input className={this.state.style} type="password" placeholder='Enter your password here' onChange={this.updatePassword} onKeyPress={this.onEnter}/>
+					</div>
+					<div className="flex-center buttons-container">
+						<div className='signup-button' onClick={this.onSubmit}>Signup</div>
+						<div className='signup-button cancel-button' onClick={()=>{this.props.changeModal('')}}>Cancel</div>
+					</div>
 				</div>
 			</div>
 		);
