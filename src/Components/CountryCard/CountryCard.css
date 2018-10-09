@@ -1,14 +1,17 @@
-.card{	
+.card, .card-clicker{
 	min-width: 250px;	
 	min-height: 400px;	
-	width: 14vw;	
+	width: 14vw;
+	border-radius: 20px;
+}
+
+.card{		
 	border:1px solid black;	
 	box-shadow: 2px 4px rgba(0, 0, 0, 0.4);	
 	display: flex;	
 	flex-direction: row;	
 	justify-content: center;	
-	flex-wrap: wrap;	
-	border-radius: 20px;	
+	flex-wrap: wrap;		
 	transition: all 300ms;	
 	cursor: pointer;	
 	margin: 10px;	
@@ -38,14 +41,10 @@
 	margin: 0px;
 }	
 
- .card-clicker{	
-	min-width: 250px;	
-	min-height: 400px;	
-	width: 14vw;	
-	border-radius: 20px;	
-	z-index: 1;	
-	opacity: 1;	
-	position: absolute;	
+ .card-clicker{		
+	z-index: 110;	
+	opacity: 1;
+	position: absolute;
 }	
  .hidden{	
 	opacity: 0;	
@@ -55,3 +54,19 @@
  .hidden:hover{	
 	opacity: 1;	
 } 
+
+@media only screen and (max-width: 700px) {
+	.card, .card-clicker{
+		width: 100%;
+		min-height: 30px;
+	}
+
+	.card-clicker{
+		height: 100%;
+	}
+
+	.card{
+		height: 15%;
+		margin: 20px;
+	}
+}

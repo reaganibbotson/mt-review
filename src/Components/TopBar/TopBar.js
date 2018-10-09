@@ -1,13 +1,13 @@
 import React from 'react';
 import Title from '../Title/Title';
 import SignupButton from '../SignupButton/SignupButton';
-import '../../Containers/App/App.css';
+import './TopBar.css';
 
 function TopBar(props){
 	return(
 		<div>
-			<div className='background-top-bar on'>
-				<Title Text="Mt. Review" changeRoute={props.changeRoute}/>
+			<div className='background-top-bar'>
+				<Title changeRoute={props.changeRoute}>Mt. Review</Title>
 				{!props.loggedIn ?
 						<div className='button-pos'>
 							<SignupButton Text="Signup" changeModal={props.changeModal} />

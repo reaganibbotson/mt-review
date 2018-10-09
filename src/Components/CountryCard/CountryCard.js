@@ -4,11 +4,12 @@ import './CountryCard.css';
  function CountryCard(props){	
  	const CountryList = props.Data.map((card, i)=>{	
 		return(	
-			<div className={`card`} onClick={props.changeSelection} key={i} id={card.region}>	
+			<div className={`card`} key={i}>
+				<div className='card-clicker' id={card.region} onClick={props.changeSelection}></div>
 				<div className='card-title'>	
 					<p>{card.region}</p>	
 				</div>	
-				<div>	
+				<div className='card-content'>
 					<p>{card.region}</p>	
 				</div>	
 			</div>	

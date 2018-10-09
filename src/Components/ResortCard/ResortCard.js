@@ -6,11 +6,12 @@ function ResortCard(props){
 	const ResortList = props.Data.map((card, i)=>{
 
 		return(
-			<div className={`card`} onClick={props.changeSelection} key={i} id={card.resort_id}>
+			<div className={`card`} key={i}>
+				<div className='card-clicker' id={card.resort_id} onClick={props.changeSelection}></div>
 				<div className='card-title'>
 					<p>{card.resort_name}</p>
 				</div>
-				<div>
+				<div className='card-content'>
 					<p>{card.resort_name}</p>
 				</div>
 			</div>

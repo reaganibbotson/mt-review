@@ -23,8 +23,12 @@
 
 @media (max-width: 500px){
 	.signout-button{
-		display: inline-flex;
+		display: flex;
 		flex-direction: row;
 		align-self: flex-end;
+		align-items: center;
+		justify-content: center;
+		height: 10px;
+		width: 40vw;
 	}
 }

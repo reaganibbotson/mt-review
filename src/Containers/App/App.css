@@ -23,53 +23,6 @@ input::placeholder{
 	font-family: 'Montserrat', sans-serif;
 }
 
-.background-top-bar{
-	background-color: rgb(23, 26, 45);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: fixed;
-	left:0px;
-	right:0px;
-	top:0px;
-	height: 100vh;
-	z-index: 10;
-	transition: all 2s;
-}
-
-.background-top-bar.on{
-	height: 150px;
-}
-
-.button-pos{
-	position: fixed;
-	right:30px;
-	top:55px;
-	display: inline-flex;
-}
-
-.page-padding{
-	top:0px;
-	left:0px;
-	right:0px;
-	height: 150px;
-}
-
-@media (max-width: 700px) {
-	.button-pos{
-		display: flex;
-		flex-direction: column;
-		top:30px;
-	}
-}
-
-@media (max-width: 500px) {
-	.button-pos{
-		visibility: hidden;
-	}
-}
-
-
 .fade-appear{
 	opacity: 0;
 	transition: all 600ms;
