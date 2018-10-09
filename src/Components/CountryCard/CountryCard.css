@@ -45,6 +45,7 @@
 	z-index: 110;	
 	opacity: 1;
 	position: absolute;
+	height: inherit;
 }	
  .hidden{	
 	opacity: 0;	
@@ -59,6 +60,7 @@
 	.card, .card-clicker{
 		width: 100%;
 		min-height: 30px;
+		height: 15%;
 	}
 
 	.card-clicker{
