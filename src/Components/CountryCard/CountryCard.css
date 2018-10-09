@@ -5,7 +5,8 @@
 	border-radius: 20px;
 }
 
-.card{		
+.card{	
+	position: relative;
 	border:1px solid black;	
 	box-shadow: 2px 4px rgba(0, 0, 0, 0.4);	
 	display: flex;	
@@ -45,7 +46,6 @@
 	z-index: 110;	
 	opacity: 1;
 	position: absolute;
-	height: inherit;
 }	
  .hidden{	
 	opacity: 0;	
@@ -60,11 +60,11 @@
 	.card, .card-clicker{
 		width: 100%;
 		min-height: 30px;
-		height: 15%;
 	}
 
 	.card-clicker{
-		height: 100%;
+		top:0px;
+		bottom: 0px;
 	}
 
 	.card{

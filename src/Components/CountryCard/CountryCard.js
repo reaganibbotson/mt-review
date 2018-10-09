@@ -3,7 +3,7 @@ import './CountryCard.css';
 
  function CountryCard(props){	
  	const CountryList = props.Data.map((card, i)=>{	
-		return(	
+		return(
 			<div className={`card`} key={i}>
 				<div className='card-clicker' id={card.region} onClick={props.changeSelection}></div>
 				<div className='card-title'>	
