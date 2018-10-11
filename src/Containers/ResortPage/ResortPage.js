@@ -20,7 +20,22 @@ class ResortPage extends React.Component{
 				priceRating: 0
 			}
 		}
+		this.fileInput = React.createRef()
+	}
 
+	uploadFile = (event) => {
+		event.preventDefault();
+		const file = new FormData();
+		file.append('file', this.fileInput.current.files[0])
+		file.append('filename', this.fileInput.current.value)
+		file.append('resort_id', this.state.resortData.resort_id)
+		fetch('http://localhost:3000/uploadFile', {
+			method:'POST',
+			headers: {'Content-Type': 'multipart/form-data'},
+			body: file
+		}).then(resp => resp.json())
+		.then(resp => console.log)
+		.catch(err=> console.log('Shit: ' + err))
 	}
 
 	changeReviewBox = (newState) => {
@@ -65,6 +80,10 @@ class ResortPage extends React.Component{
 
 		return(
 			<div className='flex-centred'>
+				<form onSubmit={this.uploadFile}>
+					<input type="file" ref={this.fileInput}/>
+					<input type="submit"/>
+				</form>
 				<h1>
 					{this.state.resortData.resort_name}
 				</h1>
