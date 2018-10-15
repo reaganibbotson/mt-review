@@ -27,10 +27,10 @@ class ResortPage extends React.Component{
 	uploadFile = (event) => {
 		event.preventDefault();
 		const file = new FormData();
-		file.append('file', this.fileInput.current.files[0]);
-		file.append('filename', this.fileInput.current.value);
-		file.append('resort_id', this.state.resortData.resort_id);
-		axios.post('https://mt-review-node.herokuapp.com/uploadFile', file)
+		data.append('file', this.fileInput.current.files[0]);
+		data.append('filename', this.fileInput.current.value);
+		data.append('resort_id', this.state.resortData.resort_id);
+		axios.post('https://mt-review-node.herokuapp.com/uploadFile', data)
 		.then(resp => console.log)
 		.catch(err=> console.log('Shit: ' + err))
 	}
