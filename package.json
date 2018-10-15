@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "http://reaganibbotson.github.io/mt-review",
   "dependencies": {
+    "axios": "^0.18.0",
     "npm": "^6.4.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",

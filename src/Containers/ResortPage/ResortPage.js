@@ -1,6 +1,7 @@
 import React from 'react';
 import LeaveReviewBox from '../LeaveReviewBox/LeaveReviewBox';
 import SeeReviewBox from '../SeeReviewBox/SeeReviewBox';
+import axios from 'axios'
 import './ResortPage.css';
 
 class ResortPage extends React.Component{
@@ -26,14 +27,10 @@ class ResortPage extends React.Component{
 	uploadFile = (event) => {
 		event.preventDefault();
 		const file = new FormData();
-		file.append('file', this.fileInput.current.files[0])
-		file.append('filename', this.fileInput.current.value)
-		file.append('resort_id', this.state.resortData.resort_id)
-		fetch('http://localhost:3000/uploadFile', {
-			method:'POST',
-			headers: {'Content-Type': 'multipart/form-data'},
-			body: file
-		}).then(resp => resp.json())
+		file.append('file', this.fileInput.current.files[0]);
+		file.append('filename', this.fileInput.current.value);
+		file.append('resort_id', this.state.resortData.resort_id);
+		axios.post('https://mt-review-node.herokuapp.com/uploadFile', file)
 		.then(resp => console.log)
 		.catch(err=> console.log('Shit: ' + err))
 	}
