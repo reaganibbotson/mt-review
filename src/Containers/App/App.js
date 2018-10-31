@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import * as routingActions from '../../Actions/routing';
 //import { BrowserRouter as Router, Route} from 'react-router';
+
 import TopBar from '../../Components/TopBar/TopBar';
 import CountryCards from '../CountryCards/CountryCards';
 import ResortCards from '../ResortCards/ResortCards';
@@ -8,20 +12,18 @@ import SignupForm from '../../Components/SignupForm/SignupForm';
 import LoginForm from '../../Components/LoginForm/LoginForm';
 import ResortPage from '../ResortPage/ResortPage';
 import SignOutForm from '../../Components/SignOutForm/SignOutForm';
+import MessageBox from '../../Components/MessageBox/MessageBox';
+
 import './App.css';
 
-import MessageBox from '../../Components/MessageBox/MessageBox';
 
 class App extends Component {
   constructor(props){
     super(props);
 
     this.state={
-      route:'Home',
       modal:'',
       fadeIn: true,
-      countrySelection:'',
-      resortSelection:'',
       loggedIn:false,
       user:{
         email:'',
@@ -39,24 +41,10 @@ class App extends Component {
       }
     }
 
-    this.changeSelection = this.changeSelection.bind(this);
     this.logInUser = this.logInUser.bind(this);
     this.signOutUser = this.signOutUser.bind(this);
   }
 
-  changeRoute = (newRoute) => {
-    if(newRoute === 'Home'){
-      this.setState({
-        route: newRoute,
-        countrySelection: '',
-        resortSelection:''
-      })
-    }else{
-      this.setState({
-        route: newRoute
-      })
-    }
-  }
 
   setMessageBox = (status, message, colour) =>{
     this.setState({
@@ -93,13 +81,6 @@ class App extends Component {
     })
   }
 
-  changeSelection(e){
-    this.state.countrySelection === '' ?
-      this.setState({ countrySelection: e.target.id })
-    :
-      this.setState({resortSelection: e.target.id})
-  }
-
   componentDidMount(){
     setTimeout(()=>{
       this.setState({ fadeIn: !this.state.fadeIn })
@@ -127,23 +108,23 @@ class App extends Component {
         <div className={fadeIn}>
           <TopBar 
             changeModal={this.changeModal} 
-            changeRoute={this.changeRoute} 
+            changeRoute={this.props.changeRoute} 
             loggedIn={this.state.loggedIn} 
             logOutUser={this.logInUser}
           />
           
           {
-            this.state.countrySelection === '' ?
-            <CountryCards changeSelection={this.changeSelection} />
+            this.props.countrySelection === '' ?
+            <CountryCards changeSelection={this.props.changeCountry} />
           : 
-            this.state.resortSelection === '' ?
+            this.props.resortSelection === '' ?
             <ResortCards 
-              countrySelection={this.state.countrySelection} 
-              changeSelection={this.changeSelection}
+              countrySelection={this.props.countrySelection} 
+              changeSelection={this.props.changeResort}
             />
           : 
             <ResortPage 
-              resortSelection={this.state.resortSelection} 
+              resortSelection={this.props.resortSelection} 
               userData={this.state.user}
               setMessageBox={this.setMessageBox}
             />
@@ -181,4 +162,20 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps =(state) =>{
+  return({
+    route: state.route.route,
+    countrySelection: state.route.countrySelection,
+    resortSelection: state.route.resortSelection
+  });
+}
+
+const mapDispatchToProps = (dispatch) =>{
+  return ({
+    changeRoute: (text) => dispatch(routingActions.setRoute(text)),
+    changeCountry: (country) => dispatch(routingActions.setCountry(country)),
+    changeResort: (resort) => dispatch(routingActions.setResort(resort))
+  });
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

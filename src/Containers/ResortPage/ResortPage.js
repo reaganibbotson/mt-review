@@ -26,7 +26,7 @@ class ResortPage extends React.Component{
 
 	uploadFile = (event) => {
 		event.preventDefault();
-		const file = new FormData();
+		const data = new FormData();
 		data.append('file', this.fileInput.current.files[0]);
 		data.append('filename', this.fileInput.current.value);
 		data.append('resort_id', this.state.resortData.resort_id);
