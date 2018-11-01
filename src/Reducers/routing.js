@@ -10,7 +10,7 @@ export const route = (state=initialRoute, action) => {
 	switch(action.type){
 		case routingActions.SET_ROUTE:
 			if (action.text === 'Home'){
-				return state
+				return initialRoute
 			}else{			
 				return Object.assign({}, state, {
 					route: action.text
@@ -18,11 +18,11 @@ export const route = (state=initialRoute, action) => {
 			}
 		case routingActions.SET_COUNTRY:
 			return Object.assign({}, state, {
-				countrySelection: action.country
+				countrySelection: action.country.target.id
 			});
 		case routingActions.SET_RESORT:
 			return Object.assign({}, state, {
-				resortSelection: action.resort
+				resortSelection: action.resort.target.id
 			});
 		default:
 			return state;
