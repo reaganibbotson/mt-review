@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import * as routingActions from '../../Actions/routing';
+import * as modalActions from '../../Actions/modal';
 //import { BrowserRouter as Router, Route} from 'react-router';
 
 import TopBar from '../../Components/TopBar/TopBar';
@@ -22,7 +23,6 @@ class App extends Component {
     super(props);
 
     this.state={
-      modal:'',
       fadeIn: true,
       loggedIn:false,
       user:{
@@ -75,12 +75,6 @@ class App extends Component {
     }})
   }
 
-  changeModal = (newModal) => {
-    this.setState({
-      modal: newModal
-    })
-  }
-
   componentDidMount(){
     setTimeout(()=>{
       this.setState({ fadeIn: !this.state.fadeIn })
@@ -107,7 +101,7 @@ class App extends Component {
         
         <div className={fadeIn}>
           <TopBar 
-            changeModal={this.changeModal} 
+            changeModal={this.props.changeModal} 
             changeRoute={this.props.changeRoute} 
             loggedIn={this.state.loggedIn} 
             logOutUser={this.logInUser}
@@ -131,28 +125,28 @@ class App extends Component {
           }
         </div>
 
-        {this.state.modal === 'Signup' &&
-          <ModalWindow changeModal={this.changeModal}>
+        {this.props.modal === 'Signup' &&
+          <ModalWindow changeModal={this.props.changeModal}>
             <SignupForm 
-              changeModal={this.changeModal} 
+              changeModal={this.props.changeModal} 
               logInUser={this.logInUser}
               setMessageBox={this.setMessageBox}
             />
           </ModalWindow>
         }
-        {this.state.modal === 'Login' &&
-          <ModalWindow changeModal={this.changeModal}>
+        {this.props.modal === 'Login' &&
+          <ModalWindow changeModal={this.props.changeModal}>
             <LoginForm 
-              changeModal={this.changeModal} 
+              changeModal={this.props.changeModal} 
               logInUser={this.logInUser}
               setMessageBox={this.setMessageBox}
             />
           </ModalWindow>
         }
-        {this.state.modal === 'Sign Out' &&
-          <ModalWindow changeModal={this.changeModal}>
+        {this.props.modal === 'Sign Out' &&
+          <ModalWindow changeModal={this.props.changeModal}>
             <SignOutForm 
-              changeModal={this.changeModal} 
+              changeModal={this.props.changeModal} 
               signOutUser={this.signOutUser}
             />
           </ModalWindow>
@@ -166,7 +160,8 @@ const mapStateToProps =(state) =>{
   return({
     route: state.route.route,
     countrySelection: state.route.countrySelection,
-    resortSelection: state.route.resortSelection
+    resortSelection: state.route.resortSelection,
+    modal: state.modal.modal
   });
 }
 
@@ -174,7 +169,8 @@ const mapDispatchToProps = (dispatch) =>{
   return ({
     changeRoute: (text) => dispatch(routingActions.setRoute(text)),
     changeCountry: (country) => dispatch(routingActions.setCountry(country)),
-    changeResort: (resort) => dispatch(routingActions.setResort(resort))
+    changeResort: (resort) => dispatch(routingActions.setResort(resort)),
+    changeModal: (modal) => dispatch(modalActions.setModal(modal))
   });
 }
 
