@@ -1,24 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './CountryCards.css';
 import CountryCard from '../../Components/CountryCard/CountryCard';
 
+import * as countryCardActions from '../../Actions/countryCards';
+
 class CountryCards extends React.Component{
-	constructor(props){
-		super(props);
-
-		this.state = {
-			data: [],
-		}
-	}
-
 	componentDidMount(){
-		fetch('https://mt-review-node.herokuapp.com/regions')
-			.then(resp=> resp.json())
-			.then((respJson) => {
-				this.setState({ data: respJson })
-				console.log(respJson)
-			}
-		);
+		// fetch('https://mt-review-node.herokuapp.com/regions')
+		// 	.then(resp=> resp.json())
+		// 	.then((respJson) => {
+		// 		this.setState({ data: respJson })
+		// 		console.log(respJson)
+		// 	}
+		// );
+		// this.props.requestCountryCards();
 	}
 
 	render(){
@@ -30,7 +26,7 @@ class CountryCards extends React.Component{
 				</div>
 				<div className='flex-on-em spacing'>
 					<CountryCard 
-						Data={this.state.data} 
+						countryData={this.props.countryCardData} 
 						changeSelection={this.props.changeSelection}
 					/>
 				</div>
@@ -39,4 +35,18 @@ class CountryCards extends React.Component{
 	}
 }
 
-export default CountryCards;
+const mapStateToProps = (state) => {
+	return ({
+		countryCardData: state.countryCard.countryCardData,
+		countryCardError: state.countryCard.countryCardError,
+		countryCardPending: state.countryCard.countryCardPending
+	})
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getCountryCards: dispatch(countryCardActions.getCountryCards())
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CountryCards);
