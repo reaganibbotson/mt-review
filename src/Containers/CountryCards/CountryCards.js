@@ -7,14 +7,7 @@ import * as countryCardActions from '../../Actions/countryCards';
 
 class CountryCards extends React.Component{
 	componentDidMount(){
-		// fetch('https://mt-review-node.herokuapp.com/regions')
-		// 	.then(resp=> resp.json())
-		// 	.then((respJson) => {
-		// 		this.setState({ data: respJson })
-		// 		console.log(respJson)
-		// 	}
-		// );
-		// this.props.requestCountryCards();
+		this.props.getCountryCards();
 	}
 
 	render(){
@@ -45,7 +38,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getCountryCards: dispatch(countryCardActions.getCountryCards())
+		getCountryCards: ()=> dispatch(countryCardActions.getCountryCards())
 	}
 }
 

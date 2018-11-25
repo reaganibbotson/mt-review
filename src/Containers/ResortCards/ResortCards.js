@@ -1,24 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import '../CountryCards/CountryCards.css';
 import ResortCard from '../../Components/ResortCard/ResortCard';
 
+import * as resortCardActions from '../../Actions/resortCards';
+
 class ResortCards extends React.Component{
-	constructor(props){
-		super(props);
-
-		this.state = {
-			data: [],
-		}
-	}
-
 	componentDidMount(){
-		fetch(`https://mt-review-node.herokuapp.com/resorts/${this.props.countrySelection}`)
-			.then(resp=> resp.json())
-			.then((respJson) => {
-				this.setState({ data: respJson })
-				console.log(respJson)
-			}
-		);
+		this.props.getResortCards(this.props.countrySelection)
 	}
 
 	render(){
@@ -30,7 +19,7 @@ class ResortCards extends React.Component{
 				</div>
 				<div className='flex-on-em spacing'>
 					<ResortCard 
-						Data={this.state.data} 
+						Data={this.props.resortCardData} 
 						changeSelection={this.props.changeSelection} 
 						countrySelection={this.props.countrySelection}
 					/>
@@ -40,4 +29,18 @@ class ResortCards extends React.Component{
 	}
 }
 
-export default ResortCards;
+const mapStateToProps = (state) => {
+	return ({
+		resortCardData: state.resortCard.resortCardData,
+		resortCardError: state.resortCard.resortCardError,
+		resortCardPending: state.resortCard.resortCardPending
+	})
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		getResortCards: (countrySelection) => dispatch(resortCardActions.getResortCards(countrySelection))
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResortCards);
