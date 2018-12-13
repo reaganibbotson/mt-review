@@ -7,7 +7,7 @@ export const getResortsForCountry = () =>{
 }
 
 export const getResortCards = () => (dispatch, getState) => {
-	const countrySelection = getState().countryCard.countryCardData
+	const countrySelection = getState().route.countrySelection
 	dispatch({ type: REQUEST_RESORT_CARDS_PENDING })
 	fetch(`https://mt-review-node.herokuapp.com/resorts/${countrySelection}`)
 		.then(resp=> resp.json())

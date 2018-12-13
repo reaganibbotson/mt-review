@@ -7,7 +7,7 @@ import * as resortCardActions from '../../Actions/resortCards';
 
 class ResortCards extends React.Component{
 	componentDidMount(){
-		this.props.getResortCards(this.props.countrySelection)
+		this.props.getResortCards()
 	}
 
 	render(){
@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		getResortCards: (countrySelection) => dispatch(resortCardActions.getResortCards(countrySelection))
+		getResortCards: () => dispatch(resortCardActions.getResortCards())
 	}
 }
 
