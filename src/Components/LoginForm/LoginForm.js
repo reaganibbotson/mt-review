@@ -9,7 +9,6 @@ class LoginForm extends React.Component{
 			email: '',
 			password: '',
 			style: '',
-			loading:false
 		}
 		this.updateEmail = this.updateEmail.bind(this);
 		this.updatePassword = this.updatePassword.bind(this);

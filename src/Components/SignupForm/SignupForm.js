@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import * as userActions from '../../Actions/user';
+
 import LoadingCover from '../LoadingCover/LoadingCover';
 import './SignupForm.css';
 
@@ -67,27 +71,14 @@ class SignupForm extends React.Component {
 			})
 			this.props.setMessageBox(true,'Fill in all required fields', 'red');
 		}else{
-			this.setState({loading: true})
-			fetch('https://mt-review-node.herokuapp.com/signup', {
-				method: 'post',
-				headers: {'Content-Type': 'application/json'},
-				body: JSON.stringify({
-					email: this.state.email,
-					username: this.state.username,
-					password: this.state.password
-				})
-			})
-			.then(response=>response.json())
-			.then(user => {
-				this.setState({loading:false})
-				console.log(user);
-				this.props.changeModal('')
+			this.props.requestSignup(this.state);
+			
+			if(this.props.username){
+				this.props.setMessageBox(true, "Successfully signed up", "green");
+				this.props.changeModal('');
+			}else{
 				this.props.setMessageBox(true,'Problem signing up', 'red');
-				if(user.user_id){
-					this.props.logInUser(user);
-					this.props.setMessageBox(true, "Successfully signed up", "green");
-				}
-			})
+			}
 		}
 	}
 
@@ -99,7 +90,7 @@ class SignupForm extends React.Component {
 					Signup To Mt Review
 				</div>
 				<div className='flex-center signup-form'>
-					{this.state.loading &&
+					{this.props.userLoading &&
 						<LoadingCover/>
 					}
 					<div>
@@ -124,4 +115,18 @@ class SignupForm extends React.Component {
 	};
 }
 
-export default SignupForm;
+const mapStateToProps = (state) =>{
+	return({
+		username: state.userData.username,
+		email: state.userData.email,
+		password: state.userData.password
+	})
+}
+
+const mapDispatchToProps = (dispatch) =>{
+	return({
+		requestSignup: (user) => dispatch(userActions.signupUser(user))
+	})
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

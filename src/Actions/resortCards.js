@@ -2,10 +2,6 @@ export const REQUEST_RESORT_CARDS_PENDING = 'REQUEST_RESORT_CARDS_PENDING';
 export const REQUEST_RESORT_CARDS_SUCCESS = 'REQUEST_RESORT_CARDS_SUCCESS';
 export const REQUEST_RESORT_CARDS_FAILED = 'REQUEST_RESORT_CARDS_FAILED';
 
-export const getResortsForCountry = () =>{
-
-}
-
 export const getResortCards = () => (dispatch, getState) => {
 	const countrySelection = getState().route.countrySelection
 	dispatch({ type: REQUEST_RESORT_CARDS_PENDING })
