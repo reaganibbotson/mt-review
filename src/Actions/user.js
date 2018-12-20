@@ -1,9 +1,8 @@
 export const REQUEST_SIGNUP_PENDING = 'REQUEST_SIGNUP_PENDING';
 export const REQUEST_SIGNUP_SUCCESS = 'REQUEST_SIGNUP_SUCCESS';
 export const REQUEST_SIGNUP_FAILED = 'REQUEST_SIGNUP_FAILED';
-export const UPDATE_DATA_FIELD = 'UPDATE_DATA_FIELD'
 
-export const signupUser = (user) => (dispatch, user) => {
+export const signupUser = () => (dispatch, user) => {
 	console.log(user);
 	dispatch({ type: REQUEST_SIGNUP_PENDING })
 	fetch(`https://mt-review-node.herokuapp.com/signup`, {

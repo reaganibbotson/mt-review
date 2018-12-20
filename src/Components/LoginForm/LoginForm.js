@@ -10,15 +10,13 @@ class LoginForm extends React.Component{
 			password: '',
 			style: '',
 		}
-		this.updateEmail = this.updateEmail.bind(this);
-		this.updatePassword = this.updatePassword.bind(this);
+		this.updateField = this.updateField.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
-		this.onEnter = this.onEnter.bind(this);
 	}
 
-	updateEmail(e){
+	updateField(e){
 		this.setState({
-			email: e.target.value
+			[e.target.name]: e.target.value
 		})
 		if(this.state.style === 'required-error'){
 			this.setState({
@@ -27,53 +25,38 @@ class LoginForm extends React.Component{
 		}
 	}
 
-	updatePassword(e){
-		this.setState({
-			password: e.target.value
-		})
-		if(this.state.style === 'required-error'){
-			this.setState({
-				style: ''
-			})
-		}
-	}
-
-	onEnter(e){
+	onSubmit(e){
 		if(e.key === 'Enter'){
-			this.onSubmit();
-		}
-	}
-
-	onSubmit(){
-		if(!this.state.email || !this.state.password){
-			this.setState({
-				style: 'required-error'
-			})
-			this.props.setMessageBox(true,'Fill in all required fields', 'red');
-		}else{
-			this.setState({
-				style:'',
-				loading: true
-			})
-			fetch('https://mt-review-node.herokuapp.com/login', {
-				method: 'post',
-				headers: {'Content-Type': 'application/json'},
-				body: JSON.stringify({
-					email: this.state.email,
-					password: this.state.password
+			if(!this.state.email || !this.state.password){
+				this.setState({
+					style: 'required-error'
 				})
-			})
-			.then(response=>response.json())
-			.then(user => {
-				this.setState({loading: false})
-				this.props.setMessageBox(true,'Problem logging in', 'red');
-				if(user.user_id){
-					this.props.setMessageBox(true, "Successfully logged in!", "green");
-					console.log(user.user_id);
-					this.props.changeModal('');
-					this.props.logInUser(user);			
-				}
-			})
+				this.props.setMessageBox(true,'Fill in all required fields', 'red');
+			}else{
+				this.setState({
+					style:'',
+					loading: true
+				})
+				fetch('https://mt-review-node.herokuapp.com/login', {
+					method: 'post',
+					headers: {'Content-Type': 'application/json'},
+					body: JSON.stringify({
+						email: this.state.email,
+						password: this.state.password
+					})
+				})
+				.then(response=>response.json())
+				.then(user => {
+					this.setState({loading: false})
+					this.props.setMessageBox(true,'Problem logging in', 'red');
+					if(user.user_id){
+						this.props.setMessageBox(true, "Successfully logged in!", "green");
+						console.log(user.user_id);
+						this.props.changeModal('');
+						this.props.logInUser(user);			
+					}
+				})
+			}
 		}
 	}
 
@@ -90,11 +73,11 @@ class LoginForm extends React.Component{
 				}
 					<div>
 						<div>Email</div>
-						<input className={this.state.style} autoFocus type='email' placeholder='Enter your email here' onChange={this.updateEmail}/>	
+						<input className={this.state.style} autoFocus type='email' placeholder='Enter your email here' name='email' onChange={this.updateField}/>	
 					</div>
 					<div>
 						<div>Password</div>
-						<input className={this.state.style} type="password" placeholder='Enter your password here' onChange={this.updatePassword} onKeyPress={this.onEnter}/>
+						<input className={this.state.style} type="password" placeholder='Enter your password here' name='password' onChange={this.updateField} onKeyPress={this.onSubmit}/>
 					</div>
 					<div className="flex-center buttons-container">
 						<div className='login-button' onClick={this.onSubmit}>Login</div>

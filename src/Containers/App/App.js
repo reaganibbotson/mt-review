@@ -67,7 +67,7 @@ class App extends Component {
 
   signOutUser(){
     this.setState({loggedIn: false})
-    this.setState({modal:''})
+    this.props.changeModal('');
     this.setState({user:{
       email:'',
       username:'',
