@@ -42,7 +42,7 @@ class SignupForm extends React.Component {
 				this.props.setMessageBox(true,'Fill in all required fields', 'red');
 			}else{
 				this.props.requestSignup(this.state);
-				
+				//need to make this wait for ^^ that thing to finish
 				if(this.props.username){
 					this.props.setMessageBox(true, "Successfully signed up", "green");
 					this.props.changeModal('');
