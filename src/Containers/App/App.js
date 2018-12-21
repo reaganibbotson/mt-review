@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import * as routingActions from '../../Actions/routing';
 import * as modalActions from '../../Actions/modal';
+import * as messageBoxActions from '../../Actions/messageBox';
 //import { BrowserRouter as Router, Route} from 'react-router';
 
 import TopBar from '../../Components/TopBar/TopBar';
@@ -33,27 +34,11 @@ class App extends Component {
       resort:{
         resort_id:'',
         resort_name:'',
-      },
-      messageBox:{
-        status: false,
-        message:'',
-        colour:''
       }
     }
 
     this.logInUser = this.logInUser.bind(this);
     this.signOutUser = this.signOutUser.bind(this);
-  }
-
-
-  setMessageBox = (status, message, colour) =>{
-    this.setState({
-      messageBox:{
-        status: status,
-        message: message,
-        colour: colour
-      }
-    })
   }
 
   logInUser=(data)=>{
@@ -93,17 +78,17 @@ class App extends Component {
       <div className="App">
 
         <MessageBox 
-          setMessageBox={this.setMessageBox} 
-          status={this.state.messageBox.status} 
-          message={this.state.messageBox.message} 
-          colour={this.state.messageBox.colour}
+          setMessageBox={this.props.setMessageBox}
+          status={this.props.messageBox.msgbxStatus} 
+          message={this.props.messageBox.msgbxMessage} 
+          colour={this.props.messageBox.msgbxColour}
         />
         
         <div className={fadeIn}>
           <TopBar 
             changeModal={this.props.changeModal} 
             changeRoute={this.props.changeRoute} 
-            loggedIn={this.state.loggedIn} 
+            loggedIn={this.props.user.username} 
             logOutUser={this.logInUser}
           />
           
@@ -119,8 +104,8 @@ class App extends Component {
           : 
             <ResortPage 
               resortSelection={this.props.resortSelection} 
-              userData={this.state.user}
-              setMessageBox={this.setMessageBox}
+              userData={this.props.user}
+              setMessageBox={this.props.setMessageBox}
             />
           }
         </div>
@@ -130,7 +115,7 @@ class App extends Component {
             <SignupForm 
               changeModal={this.props.changeModal} 
               logInUser={this.logInUser}
-              setMessageBox={this.setMessageBox}
+              setMessageBox={this.props.setMessageBox}
             />
           </ModalWindow>
         }
@@ -139,7 +124,7 @@ class App extends Component {
             <LoginForm 
               changeModal={this.props.changeModal} 
               logInUser={this.logInUser}
-              setMessageBox={this.setMessageBox}
+              setMessageBox={this.props.setMessageBox}
             />
           </ModalWindow>
         }
@@ -158,10 +143,12 @@ class App extends Component {
 
 const mapStateToProps =(state) =>{
   return({
+    user: state.userData,
     route: state.route.route,
     countrySelection: state.route.countrySelection,
     resortSelection: state.route.resortSelection,
-    modal: state.modal.modal
+    modal: state.modal.modal,
+    messageBox: state.messageBox
   });
 }
 
@@ -170,7 +157,8 @@ const mapDispatchToProps = (dispatch) =>{
     changeRoute: (text) => dispatch(routingActions.setRoute(text)),
     changeCountry: (country) => dispatch(routingActions.setCountry(country)),
     changeResort: (resort) => dispatch(routingActions.setResort(resort)),
-    changeModal: (modal) => dispatch(modalActions.setModal(modal))
+    changeModal: (modal) => dispatch(modalActions.setModal(modal)),
+    setMessageBox: (message) => dispatch(messageBoxActions.showMessageBox(message))
   });
 }
 

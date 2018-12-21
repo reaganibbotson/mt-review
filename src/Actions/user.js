@@ -1,3 +1,6 @@
+import * as modalActions from './modal';
+import * as messageBoxActions from './messageBox';
+
 export const REQUEST_SIGNUP_PENDING = 'REQUEST_SIGNUP_PENDING';
 export const REQUEST_SIGNUP_SUCCESS = 'REQUEST_SIGNUP_SUCCESS';
 export const REQUEST_SIGNUP_FAILED = 'REQUEST_SIGNUP_FAILED';
@@ -22,5 +25,13 @@ export const signupUser = (user) => (dispatch) => {
 			}
 		})
 		.then(data => dispatch({ type: REQUEST_SIGNUP_SUCCESS, payload: user }))
-		.catch(err => dispatch({ type: REQUEST_SIGNUP_FAILED, payload: err }))
+		.then(data => {
+			dispatch({type: modalActions.SET_MODAL, modal: ''})
+			dispatch({type: messageBoxActions.SET_MESSAGE_BOX, payload: {message: 'Successfully signed up', colour: 'green', status: true}})
+		}
+		)
+		.catch(err => {
+			dispatch({ type: REQUEST_SIGNUP_FAILED, payload: err })
+			dispatch({type: messageBoxActions.SET_MESSAGE_BOX, payload: {message: 'Problem signing up', colour: 'red', status: true}})
+		})
 }

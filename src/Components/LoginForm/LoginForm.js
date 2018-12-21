@@ -31,7 +31,7 @@ class LoginForm extends React.Component{
 				this.setState({
 					style: 'required-error'
 				})
-				this.props.setMessageBox(true,'Fill in all required fields', 'red');
+				this.props.setMessageBox({status: true,message: 'Fill in all required fields', colour: 'red'});
 			}else{
 				this.setState({
 					style:'',
@@ -48,9 +48,9 @@ class LoginForm extends React.Component{
 				.then(response=>response.json())
 				.then(user => {
 					this.setState({loading: false})
-					this.props.setMessageBox(true,'Problem logging in', 'red');
+					this.props.setMessageBox({status: true,message: 'Problem logging in', colour:'red'});
 					if(user.user_id){
-						this.props.setMessageBox(true, "Successfully logged in!", "green");
+						this.props.setMessageBox({status: true, message: "Successfully logged in!", colour: "green"});
 						console.log(user.user_id);
 						this.props.changeModal('');
 						this.props.logInUser(user);			
