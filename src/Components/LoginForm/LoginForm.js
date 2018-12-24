@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import * as userActions from '../../Actions/user';
+
 import LoadingCover from '../LoadingCover/LoadingCover';
 import './LoginForm.css';
 
@@ -33,29 +37,7 @@ class LoginForm extends React.Component{
 				})
 				this.props.setMessageBox({status: true,message: 'Fill in all required fields', colour: 'red'});
 			}else{
-				this.setState({
-					style:'',
-					loading: true
-				})
-				fetch('https://mt-review-node.herokuapp.com/login', {
-					method: 'post',
-					headers: {'Content-Type': 'application/json'},
-					body: JSON.stringify({
-						email: this.state.email,
-						password: this.state.password
-					})
-				})
-				.then(response=>response.json())
-				.then(user => {
-					this.setState({loading: false})
-					this.props.setMessageBox({status: true,message: 'Problem logging in', colour:'red'});
-					if(user.user_id){
-						this.props.setMessageBox({status: true, message: "Successfully logged in!", colour: "green"});
-						console.log(user.user_id);
-						this.props.changeModal('');
-						this.props.logInUser(user);			
-					}
-				})
+				this.props.requestLogin(this.state);
 			}
 		}
 	}
@@ -90,4 +72,18 @@ class LoginForm extends React.Component{
 	}
 }
 
-export default LoginForm;
+const mapStateToProps = (state) =>{
+	return({
+		username: state.userData.username,
+		email: state.userData.email,
+		user_id: state.userData.user_id
+	})
+}
+
+const mapDispatchToProps = (dispatch) =>{
+	return({
+		requestLogin: (user) => dispatch(userActions.logInUser(user))
+	})
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

@@ -26,11 +26,6 @@ class App extends Component {
     this.state={
       fadeIn: true,
       loggedIn:false,
-      user:{
-        email:'',
-        username:'',
-        user_id:''
-      },
       resort:{
         resort_id:'',
         resort_name:'',
@@ -93,15 +88,18 @@ class App extends Component {
           />
           
           {
+            // If there's no country selected, display country cards
             this.props.countrySelection === '' ?
             <CountryCards changeSelection={this.props.changeCountry} />
           : 
+            // If there's no resort selected, display resort cards
             this.props.resortSelection === '' ?
             <ResortCards 
               countrySelection={this.props.countrySelection} 
               changeSelection={this.props.changeResort}
             />
           : 
+            // Otherwise, show the resort page
             <ResortPage 
               resortSelection={this.props.resortSelection} 
               userData={this.props.user}
@@ -123,7 +121,6 @@ class App extends Component {
           <ModalWindow changeModal={this.props.changeModal}>
             <LoginForm 
               changeModal={this.props.changeModal} 
-              logInUser={this.logInUser}
               setMessageBox={this.props.setMessageBox}
             />
           </ModalWindow>
