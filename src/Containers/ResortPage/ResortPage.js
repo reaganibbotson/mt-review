@@ -11,7 +11,8 @@ class ResortPage extends React.Component{
 			leaveReview:false,
 			resortData: {
 				resort_id: 0,
-				resort_name: ''
+				resort_name: '',
+				resort_image: ''
 			},
 			reviewData:{
 				overallRating: 0,
@@ -30,6 +31,7 @@ class ResortPage extends React.Component{
 		data.append('file', this.fileInput.current.files[0]);
 		data.append('filename', this.fileInput.current.value);
 		data.append('resort_id', this.state.resortData.resort_id);
+		data.append('name', 'upl');
 		axios.post('https://mt-review-node.herokuapp.com/uploadFile', data)
 		.then(resp => console.log)
 		.catch(err=> console.log('Shit: ' + err))
@@ -56,7 +58,8 @@ class ResortPage extends React.Component{
 			this.setState({
 				resortData:{
 					resort_id: data.resort_id,
-					resort_name: data.resort_name
+					resort_name: data.resort_name,
+					resort_image: data.resort_image
 				}
 			});
 		})
@@ -87,6 +90,7 @@ class ResortPage extends React.Component{
 				<div className='grid'>
 					<div className='full-grid-row row2'>
 						<p>Insert image/s here? {this.state.resortData.resort_id}</p>
+						<img src={this.state.resortData.resort_image} alt="happy face"/>
 					</div>
 					<div className='centred-grid-row row3'>
 						<p>Insert description/blurb here.</p>
